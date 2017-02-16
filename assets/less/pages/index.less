@@ -1,4 +1,22 @@
-h1 {
-  font-size: 50px;
-  color: #3c763d;
+.site-header {
+   .bg-img('header.png',center,@header-height);
+}
+.site-nav{
+  background-color:@header-color;
+  background-color:fade(@header-color,30%);
+}
+
+ul{
+  &:extend(.ul-unstyled);//убираем отступы элемента ul
+  float:right;
+  li{
+    display: inline-block;
+    margin-left: 15px;
+    a{
+      display: block;
+      color: #ffffff;
+      text-decoration: none;
+    }
+  }
+
 }
