@@ -2,21 +2,32 @@
    height: @header-height;
   .header-background{
     height: @header-height - @header-background-img-margin;
-    .bg-img('header.png');
+    .bg-img('header.png',initial);
   }
-  header{
-    opacity: 1;
+
+  ul{
+    &:extend(.ul-unstyled);//убираем отступы элемента ul
+    li{
+      display: inline-block;
+      margin-left: 15px;
+      a{
+        display: block;
+        color: @text-color;
+        text-decoration: none;
+      }
+    }
   }
 }
 .site-nav{
-  float: left;
+  padding: @logo-font-size/2 0;
 }
 .logo-background{
   background-color: @header-logo-background;
   a{
-   margin-left: 45%;
+    margin-left: 36%;
+    text-decoration: none;
+    color: @text-color;
   }
-
 }
 .transparent-layer{
     background-color: rgba(53,53,51,0.3);
@@ -25,19 +36,13 @@
 }
 .nav-background{
   background-color: @header-nav-color;
+  height: inherit;
 }
-
-ul{
-  &:extend(.ul-unstyled);//убираем отступы элемента ul
-  float:right;
-  li{
-    display: inline-block;
-    margin-left: 15px;
-    a{
-      display: block;
-      color: #ffffff;
-      text-decoration: none;
-    }
+.logo-text{
+ font-size: @logo-font-size;
+  sup{
+    color: #f5937e;
   }
-
 }
+
+
