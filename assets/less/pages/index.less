@@ -1,9 +1,30 @@
 .site-header {
-   .bg-img('header.png',center,@header-height);
+   height: @header-height;
+  .header-background{
+    height: @header-height - @header-background-img-margin;
+    .bg-img('header.png');
+  }
+  header{
+    opacity: 1;
+  }
 }
 .site-nav{
-  background-color:@header-color;
-  background-color:fade(@header-color,30%);
+  float: left;
+}
+.logo-background{
+  background-color: @header-logo-background;
+  a{
+   margin-left: 45%;
+  }
+
+}
+.transparent-layer{
+    background-color: rgba(53,53,51,0.3);
+
+    height: @header-height;
+}
+.nav-background{
+  background-color: @header-nav-color;
 }
 
 ul{

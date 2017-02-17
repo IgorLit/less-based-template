@@ -14,11 +14,9 @@
   transition: @prop @time @ease;
 }
 
-.bg-img(@img,@pos: center,@img-height ){
+.bg-img(@img,@pos: center ){
   background-image: url('@{img-folder}@{img}');
   background-repeat: no-repeat;
   background-position: @pos;
   background-size: cover;
-  //TODO refactor this code. add height from variable.
-  height:92px;
 }
