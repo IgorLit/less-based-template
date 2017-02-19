@@ -1,0 +1,23 @@
+{
+  "name": "less-based-template",
+  "version": "1.0.0",
+  "description": "Simple template with using less preprocessor and bootstrap.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IgorLit/less-based-template.git"
+  },
+  "author": "igor litvinovich",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IgorLit/less-based-template/issues"
+  },
+  "homepage": "https://github.com/IgorLit/less-based-template#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-less": "^3.3.0"
+  }
+}
