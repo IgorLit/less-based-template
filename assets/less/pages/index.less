@@ -57,20 +57,21 @@
 .article{
   margin: 0 0 2% 0;
 
-
-  .new-head{
-    padding:0.9%;
+  .news-head{
+    padding:@news-head-padding;
     height: @news-head-height;
     background-color: #ffffff;
     box-shadow: 0  12px 20px -10px rgba(0,0,0,0.5);
-    overflow: hidden;
+   // overflow: hidden;
     .image{
-
+      overflow: hidden;
+      height: @news-head-height - 11%;
     }
     img{
       width: 100%;
     }
   }
+
   .news-body {
     margin-top: 2%;
     margin-bottom: 3%;
@@ -85,7 +86,8 @@
       border-right: 15px solid transparent;
       border-bottom: 15px solid #FFFFFF;
       position: relative;
-      top: -14px;
+      top: -13px;
+
       left: 11%;
     }
     box-shadow:

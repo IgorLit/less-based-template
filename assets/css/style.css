@@ -4177,14 +4177,17 @@ small {
 .article {
   margin: 0 0 2% 0;
 }
-.article .new-head {
+.article .news-head {
   padding: 0.9%;
   height: 300px;
   background-color: #ffffff;
   box-shadow: 0 12px 20px -10px rgba(0, 0, 0, 0.5);
-  overflow: hidden;
 }
-.article .new-head img {
+.article .news-head .image {
+  overflow: hidden;
+  height: 289px;
+}
+.article .news-head img {
   width: 100%;
 }
 .article .news-body {
@@ -4203,7 +4206,7 @@ small {
   border-right: 15px solid transparent;
   border-bottom: 15px solid #FFFFFF;
   position: relative;
-  top: -14px;
+  top: -13px;
   left: 11%;
 }
 .article h1 {
