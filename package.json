@@ -18,6 +18,7 @@
   "homepage": "https://github.com/IgorLit/less-based-template#readme",
   "devDependencies": {
     "gulp": "^3.9.1",
-    "gulp-less": "^3.3.0"
+    "gulp-less": "^3.3.0",
+    "gulp-notify": "^3.0.0"
   }
 }
