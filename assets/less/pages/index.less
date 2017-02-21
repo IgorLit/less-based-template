@@ -65,7 +65,7 @@
    // overflow: hidden;
     .image{
       overflow: hidden;
-      height: @news-head-height - 11%;
+      height: @news-head-height - @news-head-padding*2;
     }
     img{
       width: 100%;
@@ -99,13 +99,12 @@
 
   }
   h1{
-    color:@text-header-color;
-    margin-top: 0;
+   margin: 0;
   }
 
   h3{
     color:@news-sub-header-color;
-    margin: 0;
+    margin: 5px 0;
   }
 
 }
@@ -113,10 +112,6 @@
 .sidebar{
   background-color: @sidebar-background;
   padding: @sidebar-content-padding;
-  h2{
-    color: @text-header-color;
-
-  }
 
   box-shadow:
           0 0 0 1px rgb(194, 192, 184) inset,
@@ -126,14 +121,34 @@
           0 18px 0 -7px rgb(194, 192, 184)
 }
 .entry-field{
+  margin:5px 0;
   border-radius: 5px;
   padding: 8px;
   display: inline-block;
-  box-shadow: inset 0 0 6px black;
+  box-shadow: inset 0 0 6px #626262;
  input{
    outline:none;
    border: none;
  }
+  i{
+    margin: 4px;
+  }
+}
+.sidebar-list{
+  padding: inherit;
+  li{
+    list-style: none;
+    text-indent: -1.5em;
+    &:before{
+      content: '\25ba';
+      padding-right: 5px;
+    }
+  }
+}
+.tags{
+  .btn{
+    margin: 1px;
+  }
 }
 
 
