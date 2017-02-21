@@ -2479,7 +2479,7 @@ h3 {
   padding: 5.5px;
   height: 300px;
   background-color: #ffffff;
-  box-shadow: 0 12px 20px -10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 0 1px #c2c0b8 inset;
 }
 .article .news-head .image {
   overflow: hidden;
@@ -2488,8 +2488,18 @@ h3 {
 .article .news-head img {
   width: 100%;
 }
+.article .news-head .news-social-network .image {
+  z-index: 5;
+}
+.article .news-head .news-social-network .circle {
+  position: relative;
+  left: 13%;
+  bottom: 110px;
+  clear: both;
+  margin-bottom: 1.5%;
+}
 .article .news-body {
-  margin-top: 2%;
+  margin-top: 1.5%;
   margin-bottom: 3%;
   background-color: #FFFFFF;
   padding: 0 5.89% 8%;
