@@ -22,6 +22,7 @@ h1 {
     color:@text-header-color;
     font-size: 30px;
     font-weight: bold;
+
 }
 h2 {
     color: @text-header-color;
@@ -48,5 +49,23 @@ h3 {
     a{
         color:inherit;
         text-decoration: none;
+    }
+}
+
+.social-networks{
+    width: 44px;
+    left: 0;
+    top:30%;
+
+    position: fixed;
+    a{
+        background-color: @social-networks-background;
+        color:@social-networks-text-color;
+        display: block;
+        &:hover{
+            background-color: @social-networks-hover-background;
+            color:@social-networks-text-color;
+        }
+        border-color: @social-networks-border-color ;
     }
 }

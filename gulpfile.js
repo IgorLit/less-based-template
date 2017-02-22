@@ -1,6 +1,4 @@
-/**
- * Created by User on 19.02.2017.
- */
+
 const  gulp = require('gulp');
 const  less = require('gulp-less');
 const notify = require( 'gulp-notify' );
