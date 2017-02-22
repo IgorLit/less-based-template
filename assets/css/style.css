@@ -2480,6 +2480,9 @@ h3 {
 .article .news-head img {
   width: 100%;
 }
+.article .news-head .news-social-network {
+  overflow: hidden;
+}
 .article .news-head .news-social-network .circle {
   position: relative;
   left: 13%;
