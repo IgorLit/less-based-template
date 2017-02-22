@@ -67,6 +67,7 @@ h3 {
   position: fixed;
 }
 .social-networks a {
+  font-size: 14px;
   background-color: #f26c4f;
   color: #af3f27;
   display: block;
