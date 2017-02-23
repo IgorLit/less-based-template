@@ -1,5 +1,14 @@
-.site-header {
+@media (max-width: 992px) {
+  .content {
+    margin: 20px;
+  }
+  .sidebar{
+    margin: 10px;
+  }
+}
 
+
+.site-header {
    height: @header-height;
   .header-background{
     height: @header-height - @header-background-img-margin;
@@ -19,26 +28,21 @@
     }
   }
 }
-
 .wrapper{
   margin-top: @wrapper-indent;
   padding: 0;
-
 }
 .content{
   padding: 0;
 }
-.site-nav{
-  padding: @logo-font-size/2 0;
-}
-.logo-background{
+/*.logo-background{
   background-color: @header-logo-background;
   a{
     margin-left: 36%;
     text-decoration: none;
     color: @text-color;
   }
-}
+}*/
 .transparent-layer{
     background-color: @transparent-layer-color;
 
@@ -49,11 +53,27 @@
   height: inherit;
 }
 .logo-text{
- font-size: @logo-font-size;
+  font-size: @logo-font-size;
+  color:@logo-font-color;
   sup{
     color: #f5937e;
   }
+  background-color: @header-logo-background;
+
 }
+.navbar-brand{
+
+  font-size: @logo-font-size;
+  color:white;
+  sup{
+    color: #f5937e;
+  }
+  &:hover{
+    background-color: #1b6d85;
+  }
+  background-color: @header-logo-background;
+}
+
 .article{
   margin: @article-margin;
   .news-head{
@@ -165,7 +185,6 @@
   background-color: @footer-color;
   margin-top: 20px;
   padding-top: 2%;
-  height: 300px;
   width: 100%;
  p{
    color: @text-color;
@@ -177,7 +196,7 @@
   .entry-field{
 
     input {
-      width: 200px;
+      width: 175px;
     }
     .btn{
       right: 0;
