@@ -5,6 +5,7 @@
   .sidebar{
     margin: 10px;
   }
+
 }
 
 
@@ -15,18 +16,25 @@
     .bg-img('header.png',initial);
   }
 
-  ul{
-    &:extend(.ul-unstyled);//убираем отступы элемента ul
-    li{
-      display: inline-block;
-      margin-left: 15px;
-      a{
-        display: block;
-        color: @text-color;
-        text-decoration: none;
-      }
+
+}
+.navbar-header{
+padding-left: 15%;
+  padding-right: 5%;
+ // width: 20%;
+  background-color: @header-logo-background;
+
+}
+.navbar-nav{
+  a{
+    span{
+      color:white;
     }
   }
+
+}
+.navbar-inverse{
+  border-bottom: 0;
 }
 .wrapper{
   margin-top: @wrapper-indent;
@@ -35,14 +43,7 @@
 .content{
   padding: 0;
 }
-/*.logo-background{
-  background-color: @header-logo-background;
-  a{
-    margin-left: 36%;
-    text-decoration: none;
-    color: @text-color;
-  }
-}*/
+
 .transparent-layer{
     background-color: @transparent-layer-color;
 
@@ -52,26 +53,15 @@
   background-color: @header-nav-color;
   height: inherit;
 }
-.logo-text{
-  font-size: @logo-font-size;
-  color:@logo-font-color;
-  sup{
-    color: #f5937e;
-  }
-  background-color: @header-logo-background;
 
-}
 .navbar-brand{
-
   font-size: @logo-font-size;
-  color:white;
   sup{
     color: #f5937e;
   }
-  &:hover{
-    background-color: #1b6d85;
+  span{
+    color:white;
   }
-  background-color: @header-logo-background;
 }
 
 .article{
@@ -210,3 +200,10 @@
   clear: both;
 }
 
+@media (max-width: 768px) {
+
+  .navbar-header{
+    padding-left: 5%;
+    background-color: @header-nav-color;
+  }
+}
