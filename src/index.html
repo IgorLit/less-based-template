@@ -4,6 +4,20 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Title</title>
+  <!-- 1. Load libraries -->
+  <!-- Polyfill(s) for older browsers -->
+  <script src="lib/core-js/client/shim.min.js"></script>
+
+  <script src="lib/zone.js/dist/zone.js"></script>
+  <script src="lib/reflect-metadata/Reflect.js"></script>
+  <script src="lib/systemjs/dist/system.src.js"></script>
+
+  <!-- 2. Configure SystemJS -->
+  <script src="systemjs.config.js"></script>
+  <script>
+      System.import('app')
+          .then(null, console.error.bind(console));
+  </script>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -252,5 +266,6 @@
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+<x>Loading...</x>
 </body>
 </html>
