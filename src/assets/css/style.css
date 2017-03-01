@@ -2420,6 +2420,9 @@ h3 {
   .sidebar {
     margin: 10px;
   }
+  .user-account {
+    margin-right: 0;
+  }
 }
 .site-header {
   height: 92px;
@@ -2438,6 +2441,9 @@ h3 {
 }
 .navbar-nav a span {
   color: white;
+}
+.user-account {
+  margin-right: 16%;
 }
 .navbar-inverse {
   border-bottom: 0;

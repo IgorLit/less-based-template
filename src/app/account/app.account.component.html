@@ -1,0 +1,17 @@
+<span class="hello-message" [hidden]="!isLogin">Hello, {{user}}!</span>
+<a (click)="showDialog = !showDialog" [hidden]="isLogin">Login</a>
+
+<a class="manage-block" (click)="logout()" [hidden]="!isLogin">Logout</a>
+
+<app-dialog [(visible)]="showDialog">
+    <div class="modal-header">
+        <h1>Login</h1>
+    </div>
+    <div class="modal-body">
+        <form class="basic-form">
+            <input type="text" placeholder="username" #username required>
+            <input type="password" placeholder="password" #password required>
+            <input type="submit" value="Login" (click)="login(username,password)">
+        </form>
+    </div>
+</app-dialog>

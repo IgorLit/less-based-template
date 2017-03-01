@@ -2,7 +2,8 @@ import {NgModule}      from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from "./app.component";
-import { MyComponent } from './dialog/form';
+import { Dialog } from './dialog/app.dialog.component';
+import  {UserAccount } from './account/app.account.component';
 
 import {routing, appRoutingProviders} from './app.routing';
 import {FormsModule} from "@angular/forms";
@@ -14,13 +15,13 @@ import {FormsModule} from "@angular/forms";
         routing
     ],
     declarations: [
-        AppComponent,
-        MyComponent
+        UserAccount,
+        Dialog
     ],
     providers: [
         appRoutingProviders
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [UserAccount]
 })
 export class AppModule {
 }

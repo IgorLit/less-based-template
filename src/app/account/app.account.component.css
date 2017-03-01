@@ -1,0 +1,18 @@
+.modal-header{
+    background-color: #f26c4f;
+}
+.hello-message{
+    color:#f26c4f;
+}
+a{
+    text-decoration: none;
+    cursor: pointer;
+    color:white;
+    vertical-align: middle;
+}
+.basic-form{
+    color:black;
+}
+.manage-block{
+    padding-left: 16px;
+}
