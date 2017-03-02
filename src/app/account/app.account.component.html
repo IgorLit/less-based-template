@@ -1,17 +1,17 @@
-<span class="hello-message" [hidden]="!isLogin">Hello, {{user}}!</span>
-<a (click)="showDialog = !showDialog" [hidden]="isLogin">Login</a>
+<span class="hello-message" [hidden]="!isLogin()">Hello, {{getUserName()}}!</span>
+<a (click)="showDialog = !showDialog" [hidden]="isLogin()">Login</a>
 
-<a class="manage-block" (click)="logout()" [hidden]="!isLogin">Logout</a>
+<a class="manage-block" (click)="logout()" [hidden]="!isLogin()">Logout</a>
 
 <app-dialog [(visible)]="showDialog">
     <div class="modal-header">
-        <h1>Login</h1>
+        <span class="modal-title">Login</span>
     </div>
     <div class="modal-body">
         <form class="basic-form">
-            <input type="text" placeholder="username" #username required>
-            <input type="password" placeholder="password" #password required>
-            <input type="submit" value="Login" (click)="login(username,password)">
+            <input class="input-text" type="text" placeholder="username" #username required>
+            <input class="input-text" type="password" placeholder="password" #password required>
+            <input class="input-submit" type="submit" value="Login" (click)="login(username,password)">
         </form>
     </div>
 </app-dialog>

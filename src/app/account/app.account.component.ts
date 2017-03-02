@@ -1,4 +1,5 @@
 import {Component} from "@angular/core";
+import  { AccountService } from "../account/app.account.service";
 
 @Component({
     selector:"user-account",
@@ -6,20 +7,25 @@ import {Component} from "@angular/core";
     styleUrls: ["./app/account/app.account.component.css"]
 })
 export class UserAccount {
-    showDialog:boolean = false;
-    user:string;
-    isLogin:boolean = false;
-     login(username: HTMLInputElement, password: HTMLInputElement) { //TODO authorization with using db.
-       if (username.value === "root" && password.value === "root") {
-           this.user = username.value;
-           this.isLogin = true;
-           this.showDialog = false;
-       }
-    }
-    logout() {
-         this.isLogin = false;
-    }
-    constructor() {
+    public showDialog:boolean = false;
 
+    public isLogin():boolean {
+        return AccountService.isLogin;
     }
+    constructor(public account: AccountService) {
+    }
+    public getUserName(): string {
+        return AccountService.user;
+    }
+    public logout() {
+        this.account.logout();
+    }
+
+    public  login(username: HTMLInputElement, password: HTMLInputElement) {
+        this.account.login(username, password)
+            .then(() => {
+                 this.showDialog = false;
+            });
+    }
+
 }
