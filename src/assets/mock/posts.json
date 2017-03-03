@@ -1,0 +1,20 @@
+{
+  "posts":[{
+    "imageUrl":"assets/img/new-head-img-1.jpg",
+    "title": "My Title",
+    "small-text": "small text",
+    "main-text": "ashdasoidhas hasdh dkjhas asash ahasdas"
+  },
+    {
+      "imageUrl":"assets/img/new-head-img-1.jpg",
+      "title": "My Title",
+      "small-text": "small text",
+      "main-text": "ashdasoidhas hasdh dkjhas asash ahasdas"
+    },
+    {
+      "imageUrl":"assets/img/new-head-img-1.jpg",
+      "title": "My Title",
+      "small-text": "small text",
+      "main-text": "ashdasoidhas hasdh dkjhas asash ahasdas"
+    }]
+}

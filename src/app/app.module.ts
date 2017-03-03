@@ -2,6 +2,7 @@ import {NgModule}      from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AccountService} from "./account/app.account.service";
+import {PostService} from "./post/app.post.service";
 import { Dialog } from './dialog/app.dialog.component';
 import  {UserAccount } from './account/app.account.component';
 import  {Post } from './post/app.post.component';
@@ -22,7 +23,8 @@ import {FormsModule} from "@angular/forms";
     ],
     providers: [
         appRoutingProviders,
-        AccountService
+        AccountService,
+        PostService
     ],
     bootstrap: [UserAccount, Post]
 })

@@ -2524,6 +2524,41 @@ h3 {
   color: #f26c4f;
   margin: 5px 0;
 }
+.post-manage,
+.comments {
+  margin: 0 5px;
+  right: 5px;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  position: absolute;
+  font-size: 15px;
+}
+.post-manage a {
+  color: white;
+  text-decoration: none;
+}
+.post-manage .manage-control {
+  width: 30px;
+  height: 30px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  background-color: #f26c4f;
+  border-radius: 4px;
+}
+.comments {
+  margin-top: 255px;
+  background-color: #f26c4f;
+  border-radius: 4px;
+}
+.comments a {
+  color: white;
+  text-decoration: none;
+  margin: 19px;
+}
+.small {
+  right: 20px;
+}
 .sidebar {
   background-color: #fefefe;
   padding: 1% 5.89% 8%;

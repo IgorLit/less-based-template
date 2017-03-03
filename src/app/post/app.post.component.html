@@ -1,8 +1,27 @@
-<article *ngFor="let i of arr" class="article">
+<article *ngFor="let post of posts | slice:0:bigPosts" class="article">
     <div class="news-head">
+        <div class="post-manage">
+            <div class="manage-control">
+                <a href="#">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                </a>
+            </div>
+            <div class="manage-control">
+                <a href="#">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+        <div  class="comments">
+                <a href="#">
+                    10 Comments
+                </a>
+        </div>
         <div class="news-social-network">
             <div class="image">
-                <img src="assets/img/new-head-img-1.jpg" alt="Head Image">
+
+                <img src="{{post.imageUrl}}" alt="Head Image">
+
             </div>
             <div class="circle">
                 <a href="">
@@ -14,15 +33,49 @@
                     <i class="fa fa-twitter" aria-hidden="true"></i>
                 </a>
             </div>
-
         </div>
     </div>
     <div class="news-body">
-        <h1>Roundup: 21 web ...</h1>
-        <small>21th April 2012</small>
-        <h3>Sub heading to go heare</h3>
-        <span>
-              Have you ever dreamed of running a bookshop? You can have a go for a week at the Open Book Store in Wigton, Scotland. In fact, if you book a holiday at the self-catering flat on Airbnb, you also have to work for 40 hours in the bookshop downstairs. A week in the flat costs £150. You won’t get paid for working, but you can use your own creative ideas to sell books and gain valuable experience. Wigton is Scotland’s national book town and this new venture is attracting interest from all over the world.
-        </span>
+        <h1>{{post.title}}</h1>
+        <small>{{post.date}}</small>
+        <h3>{{post.subtitle}}</h3>
+        <span>{{post.text}}</span>
     </div>
 </article>
+
+<div class="row">
+    <div *ngFor="let post of posts | slice:bigPosts" class="col-md-6 col-lg-6 col-sm-6">
+        <article  class="article" >
+            <div class="news-head">
+                <div class="post-manage small">
+                    <div class="manage-control">
+                        <a href="#">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="manage-control">
+                        <a href="#">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+                <div  class="comments small">
+                    <a href="#">
+                        10 Comments
+                    </a>
+                </div>
+                <div class="news-social-network">
+                    <div class="image">
+                        <img src="{{post.imageUrl}}" alt="Head Image">
+                    </div>
+                </div>
+            </div>
+            <div class="news-body">
+                <h1>{{post.title}}</h1>
+                <small>{{post.date}}</small>
+                <span>{{post.text}}</span>
+            </div>
+        </article>
+    </div>
+
+</div>
