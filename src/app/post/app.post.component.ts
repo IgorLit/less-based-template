@@ -1,4 +1,5 @@
-import {Component} from "@angular/core";
+import { Component } from "@angular/core";
+import { Router } from "@angular/router";
 import  { PostService } from './app.post.service';
 
 @Component({
@@ -24,8 +25,12 @@ export class Post {
     }
 
     private _posts:any[];
-    constructor(public  posetService: PostService) {
+
+    constructor(public  posetService: PostService, private router: Router) {
         this.bigPosts = 2;
-        posetService.readAll().then(data => this.posts = data.posts);
+        posetService.readAll().then(data => this.posts = data);
+    }
+    public edit(post: any) {
+        this.router.navigate(["posts", post.id, "edit"]);
     }
 }

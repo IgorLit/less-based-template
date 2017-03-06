@@ -2552,6 +2552,9 @@ h3 {
   background-color: #f26c4f;
   border-radius: 4px;
 }
+.post-manage .manage-control a {
+  cursor: pointer;
+}
 .comments {
   margin-top: 255px;
   background-color: #f26c4f;
@@ -2561,6 +2564,7 @@ h3 {
   color: white;
   text-decoration: none;
   margin: 19px;
+  cursor: pointer;
 }
 .small {
   right: 20px;

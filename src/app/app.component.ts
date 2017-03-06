@@ -6,7 +6,5 @@ import {Component} from "@angular/core";
   styleUrls: ['./app/app.component.css']
 })
 export class AppComponent  {
-  showDialog = false;
-
   constructor() { }
 }
