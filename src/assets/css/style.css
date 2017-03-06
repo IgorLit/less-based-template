@@ -2504,6 +2504,12 @@ h3 {
   clear: both;
   margin-bottom: 1.5%;
 }
+.article .news-head:hover .hover-display {
+  display: block;
+}
+.article .news-head .hover-display {
+  display: none;
+}
 .article .news-body {
   margin-top: 1.5%;
   margin-bottom: 3%;

@@ -28,7 +28,10 @@ export class Post {
 
     constructor(public  posetService: PostService, private router: Router) {
         this.bigPosts = 2;
-        posetService.readAll().then(data => this.posts = data);
+        posetService.readAll().then(data => {
+            console.log(data);
+            this.posts = data;
+        } );
     }
     public edit(post: any) {
         this.router.navigate(["posts", post.id, "edit"]);

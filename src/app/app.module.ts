@@ -1,5 +1,7 @@
 import {NgModule}      from '@angular/core';
+import {Http, HttpModule}      from '@angular/http';
 import {BrowserModule} from '@angular/platform-browser';
+
 
 import  { AppComponent } from './app.component';
 import {AccountService} from "./account/app.account.service";
@@ -13,11 +15,15 @@ import  {Post } from './post/app.post.component';
 import {routing, appRoutingProviders} from './app.routing';
 import {FormsModule} from "@angular/forms";
 import {EditPost} from "./pages/posts/edit/app.pages.posts.edit.component";
+import  { CreatePost } from "./pages/posts/create/app.pages.posts.create.component";
+import  { RemovePost } from "./pages/posts/remove/app.pages.posts.remove.component";
+import  { DataServer } from "./server";
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
+        HttpModule,
         routing
     ],
     declarations: [
@@ -27,12 +33,15 @@ import {EditPost} from "./pages/posts/edit/app.pages.posts.edit.component";
         AppComponent,
         Sidebar,
         MainPage,
-        EditPost
+        EditPost,
+        CreatePost,
+        RemovePost
     ],
     providers: [
         appRoutingProviders,
         AccountService,
-        PostService
+        PostService,
+        Http
     ],
     bootstrap: [AppComponent]
 })

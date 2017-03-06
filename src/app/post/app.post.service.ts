@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
 import  {Post} from './app.post.interface';
 
 @Injectable()
@@ -8,11 +9,10 @@ export class PostService {
         return Promise.resolve(JSON.parse(this.posts).posts);
     }
 
-  constructor() {
+    constructor() {
+    }
 
-  }
-
-  private posts:string = `{
+    private posts:string = `{
     "posts":[{
          "id" : 1,
         "imageUrl":"assets/img/new-head-img-1.jpg",

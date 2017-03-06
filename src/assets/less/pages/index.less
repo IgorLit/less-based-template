@@ -89,6 +89,15 @@ padding-left: 15%;
       }
 
     }
+    &:hover{
+      .hover-display{
+        display: block;
+      }
+    }
+    .hover-display{
+      display: none;
+    }
+
   }
 
   .news-body {
@@ -150,8 +159,10 @@ padding-left: 15%;
     a{
       cursor: pointer;
     }
+
   }
 }
+
 .comments{
   &:extend(.post-manage);
   margin-top: @news-head-height - @news-head-height*0.15;
