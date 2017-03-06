@@ -76,6 +76,12 @@ h3 {
   background-color: #c26651;
   color: #af3f27;
 }
+.social-networks .list-group-item:first-child {
+  border-top-left-radius: 0;
+}
+.social-networks .list-group-item:last-child {
+  border-bottom-left-radius: 0;
+}
 /*!
  *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)

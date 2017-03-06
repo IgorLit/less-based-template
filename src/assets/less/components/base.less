@@ -57,7 +57,6 @@ h3 {
     width: 48px;
     left: 0;
     top:30%;
-
     position: fixed;
     a{
         font-size: 22px;
@@ -69,7 +68,13 @@ h3 {
             color:@social-networks-text-color;
         }
         border-color: @social-networks-border-color ;
-
     }
-
+    .list-group-item{
+        &:first-child{
+            border-top-left-radius:0;
+        }
+        &:last-child{
+            border-bottom-left-radius: 0;
+        }
+    }
 }
