@@ -1,3 +1,13 @@
-<div class="remove-post">
-
-</div>
+<main-page>
+</main-page>
+<app-dialog [(visible)]="showDialog" class="remove-dialog">
+    <div class="modal-header">
+        <span class="modal-title">Delete</span>
+    </div>
+    <div class="modal-body">
+        <form class="basic-form">
+            <input type="button" value="Yes" (click)="yes()">
+            <input type="button" value="No" (click)="no()">
+        </form>
+    </div>
+</app-dialog>

@@ -17,7 +17,7 @@ import {FormsModule} from "@angular/forms";
 import {EditPost} from "./pages/posts/edit/app.pages.posts.edit.component";
 import  { CreatePost } from "./pages/posts/create/app.pages.posts.create.component";
 import  { RemovePost } from "./pages/posts/remove/app.pages.posts.remove.component";
-import  { DataServer } from "./server";
+
 
 @NgModule({
     imports: [
