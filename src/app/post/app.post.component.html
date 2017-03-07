@@ -1,20 +1,20 @@
 <article *ngFor="let post of posts | slice:0:bigPosts" class="article">
     <div class="news-head">
         <div class="post-manage">
-            <div class="manage-control">
+            <div *ngIf="isLogin()" class="manage-control">
                 <a (click)="edit(post)">
                     <i class="fa fa-pencil" aria-hidden="true"></i>
                 </a>
             </div>
 
-                <div class="manage-control hover-display">
+                <div *ngIf="isLogin()" class="manage-control hover-display">
                     <a (click)="remove(post)">
                         <i class="fa fa-times" aria-hidden="true"></i>
                     </a>
                 </div>
 
         </div>
-        <div  class="comments">
+        <div *ngIf="isLogin()"  class="comments">
                 <a href="#">
                     10 Comments
                 </a>
@@ -49,8 +49,8 @@
     <div *ngFor="let post of posts | slice:bigPosts" class="col-md-6 col-lg-6 col-sm-6">
         <article  class="article" >
             <div class="news-head">
-                <div class="post-manage small">
-                    <div class="manage-control">
+                <div *ngIf="isLogin()" class="post-manage small">
+                    <div  class="manage-control">
                         <a (click)="edit(post)" >
                             <i class="fa fa-pencil" aria-hidden="true"></i>
                         </a>
@@ -61,7 +61,7 @@
                         </a>
                     </div>
                 </div>
-                <div  class="comments small">
+                <div *ngIf="isLogin()"  class="comments small">
                     <a href="#">
                         10 Comments
                     </a>
@@ -75,6 +75,7 @@
             <div class="news-body">
                 <h1>{{post.title}}</h1>
                 <small>{{post.date}}</small>
+                <br>
                 <span>{{post.text}}</span>
             </div>
         </article>

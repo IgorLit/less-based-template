@@ -23,14 +23,14 @@ export class PostService {
             id: 1,
             imageUrl: "assets/img/new-head-img-1.jpg",
             title: "My Title-s",
-            date: "small text",
+            date: "2017-05-15",
             subtitle: "Subtitle",
             text: "If you read and listen to two articles every day, your reading and listening skills can improve fast.own language."
         }, {
             id: 6,
             imageUrl: "assets/img/new-head-img-1.jpg",
             title: "My Title 6",
-            date: "small text 6",
+            date: "2017-07-06",
             subtitle: "Subtitle 6",
             text: "ashdasoidhas hasdh dkjhas asash ahasdas 6"
         },
@@ -38,14 +38,14 @@ export class PostService {
                 id: 2,
                 imageUrl: "assets/img/new-head-img-1.jpg",
                 title: "My Title 7",
-                date: "small text 6",
+                date: "2017-08-03",
                 subtitle: "Subtitle 6",
                 text: "ashdasoidhas hasdh dkjhas asash ahasdas 6"
             }, {
                 id: 3,
                 imageUrl: "assets/img/new-head-img-1.jpg",
                 title: "My Title 6",
-                date: "small text 6",
+                date: "2017-08-28",
                 subtitle: "Subtitle 6",
                 text: "ashdasoidhas hasdh dkjhas asash ahasdas 6"
             },
@@ -53,14 +53,14 @@ export class PostService {
                 id: 4,
                 imageUrl: "assets/img/new-head-img-1.jpg",
                 title: "My Title 6",
-                date: "small text 6",
+                date: "2017-09-19",
                 subtitle: "Subtitle 6",
                 text: "ashdasoidhas hasdh dkjhas asash ahasdas 6"
             }, {
                 id: 5,
                 imageUrl: "assets/img/new-head-img-1.jpg",
                 title: "My Title 6",
-                date: "small text 6",
+                date: "2017-09-19",
                 subtitle: "Subtitle 6",
                 text: "ashdasoidhas hasdh dkjhas asash ahasdas 6"
             }];

@@ -19,10 +19,11 @@
         <h2>
             Recent Posts
         </h2>
-        <ul class="sidebar-list">
-            <li><em> chine is a very convenient aid to contact companies and friends because messages</em></li>
-            <li><em>because messages are transmitted immediately. Fax machines work like photocopiers.</em></li>
-            <li><em>The fax machine is a very convenient aid to contact companies</em></li>
+        <ul  class="sidebar-list">
+            <li *ngFor="let post of posts | slice:0: recentPostsLimit">
+                <em> {{post.title}}</em><br>
+                <small>{{post.date}}</small>
+            </li>
         </ul>
         <h2>
             Popular Tags

@@ -17,6 +17,7 @@ import {FormsModule} from "@angular/forms";
 import {EditPost} from "./pages/posts/edit/app.pages.posts.edit.component";
 import  { CreatePost } from "./pages/posts/create/app.pages.posts.create.component";
 import  { RemovePost } from "./pages/posts/remove/app.pages.posts.remove.component";
+import  { BlogComponent } from "./pages/blog/app.pages.blog.component";
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import  { RemovePost } from "./pages/posts/remove/app.pages.posts.remove.compone
         MainPage,
         EditPost,
         CreatePost,
-        RemovePost
+        RemovePost,
+        BlogComponent
     ],
     providers: [
         appRoutingProviders,
