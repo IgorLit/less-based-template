@@ -8,14 +8,23 @@ export class PostService {
         return Promise.resolve(this.items);
     }
 
+    public readById(id: Number) {
+        let result = this.items[this.getIndexById(id)];
+        return Promise.resolve(result);
+    }
+
     public remove(id: any) {
+        this.items.splice(this.getIndexById(id), 1);
+        return Promise.resolve(this.items);
+    }
+
+    private getIndexById(id: any) {
         for (let i = 0; i < this.items.length; i++) {
             if (this.items[i].id === Number.parseInt(id)) {
-                this.items.splice(i, 1);
-                return Promise.resolve(this.items);
+                return i;
             }
         }
-        return Promise.resolve(this.items);
+        return null;
     }
 
     constructor() {

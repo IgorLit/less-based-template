@@ -7,17 +7,17 @@
                 </a>
             </div>
 
-                <div *ngIf="isLogin()" class="manage-control hover-display">
-                    <a (click)="remove(post)">
-                        <i class="fa fa-times" aria-hidden="true"></i>
-                    </a>
-                </div>
+            <div *ngIf="isLogin()" class="manage-control hover-display">
+                <a (click)="remove(post)">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </a>
+            </div>
 
         </div>
-        <div *ngIf="isLogin()"  class="comments">
-                <a href="#">
-                    10 Comments
-                </a>
+        <div *ngIf="isLogin()" class="comments">
+            <a (click)="comments(post)">
+                10 Comments
+            </a>
         </div>
         <div class="news-social-network">
             <div class="image">
@@ -47,11 +47,11 @@
 
 <div class="row">
     <div *ngFor="let post of posts | slice:bigPosts" class="col-md-6 col-lg-6 col-sm-6">
-        <article  class="article" >
+        <article class="article">
             <div class="news-head">
                 <div *ngIf="isLogin()" class="post-manage small">
-                    <div  class="manage-control">
-                        <a (click)="edit(post)" >
+                    <div class="manage-control">
+                        <a (click)="edit(post)">
                             <i class="fa fa-pencil" aria-hidden="true"></i>
                         </a>
                     </div>
@@ -61,8 +61,8 @@
                         </a>
                     </div>
                 </div>
-                <div *ngIf="isLogin()"  class="comments small">
-                    <a href="#">
+                <div *ngIf="isLogin()" class="comments small">
+                    <a (click)="comments(post)">
                         10 Comments
                     </a>
                 </div>
