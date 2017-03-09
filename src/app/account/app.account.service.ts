@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class AccountService {
     public static user:string;
-    public static isLogin:boolean = false;
+    public static isLogin:boolean = true;
 
     public  login(username: HTMLInputElement, password: HTMLInputElement):Promise<any> { //TODO authorization with using db.
        return  new Promise((resolve, reject) => {

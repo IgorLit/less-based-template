@@ -18,6 +18,11 @@ export class PostService {
         return Promise.resolve(this.items);
     }
 
+    public update(id: any, data: Post): Promise<Post> {
+        Object.assign(this.items[this.getIndexById(id)], data);
+        return Promise.resolve(this.items[this.getIndexById(id)]);
+    }
+
     private getIndexById(id: any) {
         for (let i = 0; i < this.items.length; i++) {
             if (this.items[i].id === Number.parseInt(id)) {

@@ -1,9 +1,9 @@
 <div class="edit-post">
-    <div> Image Url: <input type="text"></div>
-    <div> Title: <input type="text"></div>
-    <div>Date: <input type="text"></div>
-    <div>Subtitle: <input type="text"></div>
-    <div>Text: <input type="text"></div>
-    <div><a>Edit</a></div>
+    <div> Image Url: <input type="text" [(ngModel)]="post.imageUrl"></div>
+    <div> Title: <input type="text" [(ngModel)]="post.title"></div>
+    <div>Date: <input type="text" [(ngModel)]="post.date"></div>
+    <div>Subtitle: <input type="text" [(ngModel)]="post.subtitle"></div>
+    <div>Text: <input type="text" [(ngModel)]="post.text"></div>
+    <div><a (click)="edit()">Edit</a></div>
     <div><a>Back</a></div>
 </div>
