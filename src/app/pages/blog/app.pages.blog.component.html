@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-6 col-md-offset-1 content">
-        <article  class="article">
+        <article class="article">
             <div class="news-head">
                 <div class="news-social-network">
                     <div class="image">
@@ -10,10 +10,60 @@
             </div>
             <div class="news-body">
                 <h1>{{post.title}}</h1>
-            <small>{{post.date}}</small>
+                <small>{{post.date}}</small>
                 <h3>{{post.subtitle}}</h3>
                 <span>{{post.text}}</span>
             </div>
         </article>
+        <div class="comments">
+            <h3 class="title-comments">Comments ()</h3>
+            <ul class="media-list">
+                <!-- Комментарий (уровень 1) -->
+                <li *ngFor="let comment of post.comments" class="media">
+                    <div class="media-left">
+                        <a>
+                            <img class="media-object img-circle" src="{{comment.commenter.avatarUrl}}" alt="...">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <div class="author">{{comment.commenter.name}}</div>
+                                <div class="metadata">
+                                    <span class="date">{{comment.date}}</span>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="media-text text-justify">{{comment.text}}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
+                <!-- Конец комментария (уровень 1) -->
+                <li class="media">
+                    <div class="media-left">
+                        <a>
+                            <img class="media-object img-circle" src="assets/img/user.jpg" alt="...">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <div class="author">{{getUserName()}}</div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="media-text text-justify">
+                                    <input type="text" #text>
+                                </div>
+                                <div class="pull-right"><a class="btn btn-info" (click)="publishComment(text)">Publish</a></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>

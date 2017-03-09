@@ -2429,6 +2429,9 @@ h3 {
   .user-account {
     margin-right: 0;
   }
+  .wrapper {
+    min-height: calc(100vh - 400px);
+  }
 }
 .site-header {
   height: 92px;
@@ -2460,6 +2463,7 @@ h3 {
 }
 .content {
   padding: 0;
+  flex: 1 0 auto;
 }
 .transparent-layer {
   background-color: rgba(53, 53, 51, 0.3);
@@ -2537,7 +2541,7 @@ h3 {
   margin: 5px 0;
 }
 .post-manage,
-.comments {
+.comments-amount {
   margin: 0 5px;
   right: 5px;
   justify-content: center;
@@ -2561,12 +2565,12 @@ h3 {
 .post-manage .manage-control a {
   cursor: pointer;
 }
-.comments {
+.comments-amount {
   margin-top: 255px;
   background-color: #f26c4f;
   border-radius: 4px;
 }
-.comments a {
+.comments-amount a {
   color: white;
   text-decoration: none;
   margin: 19px;
@@ -2614,7 +2618,6 @@ h3 {
   margin-top: 20px;
   padding-top: 2%;
   width: 100%;
-  bottom: 0;
 }
 .site-footer p {
   color: #ffffff;
