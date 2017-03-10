@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import  {Post} from './app.post.interface';
+import {User} from "../account/app.account.user";
 
 @Injectable()
 export class PostService {
@@ -23,12 +24,11 @@ export class PostService {
         return Promise.resolve(this.items[this.getIndexById(id)]);
     }
 
-    public addComment(username: string, postId: any, commentText: any) {
+    public addComment(user: User, postId: any, commentText: any) {
         this.items[this.getIndexById(postId)].comments.push({
-            commenter: {
-                name: username,
-                avatarUrl: "assets/img/user.jpg"
-            }, date: new Date().toISOString().slice(0, 19).replace("T", " "), text: commentText
+            commenter: user,
+            date: new Date().toISOString().slice(0, 19).replace("T", " "),
+            text: commentText
         });
         return this.items[this.getIndexById(postId)].comments;
     }

@@ -15,7 +15,7 @@ export class UserAccount {
     constructor(public account: AccountService) {
     }
     public getUserName(): string {
-        return AccountService.user;
+        return AccountService.user.name;
     }
     public logout() {
         this.account.logout();

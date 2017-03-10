@@ -2,6 +2,7 @@ import {Component} from "@angular/core";
 import {ActivatedRoute, Params} from "@angular/router";
 import {PostService} from "../../post/app.post.service";
 import {AccountService} from "../../account/app.account.service";
+import {User} from "../../account/app.account.user";
 @Component({
     selector: "blog",
     templateUrl: "./app/pages/blog/app.pages.blog.component.html",
@@ -36,8 +37,11 @@ export class BlogComponent {
         this._comments = value;
     }
 
-    public getUserName(): string {
+    public getUser(): User {
         return AccountService.user;
+    }
+    public getUserName(): string {
+        return AccountService.user.name;
     }
 
     constructor(private postService: PostService, private activatedRoute: ActivatedRoute) {
@@ -48,7 +52,6 @@ export class BlogComponent {
     }
 
     public publishComment(input: HTMLInputElement) {
-        console.log("publish comment was called text:" + input.value + "id: " + this.id);
-        this.postService.addComment(this.getUserName(), this.id, input.value);
+        this.postService.addComment(this.getUser(), this.id, input.value);
     }
 }

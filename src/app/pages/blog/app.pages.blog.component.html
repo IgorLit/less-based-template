@@ -16,7 +16,7 @@
             </div>
         </article>
         <div class="comments">
-            <h3 class="title-comments">Comments ()</h3>
+            <h3 class="title-comments">Comments</h3>
             <ul class="media-list">
                 <!-- Комментарий (уровень 1) -->
                 <li *ngFor="let comment of post.comments" class="media">
@@ -45,7 +45,7 @@
                 <li class="media">
                     <div class="media-left">
                         <a>
-                            <img class="media-object img-circle" src="assets/img/user.jpg" alt="...">
+                            <img class="media-object img-circle" src="{{getUser().avatarUrl}}" alt="...">
                         </a>
                     </div>
                     <div class="media-body">
