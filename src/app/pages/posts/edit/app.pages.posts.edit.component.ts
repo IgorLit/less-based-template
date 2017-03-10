@@ -1,5 +1,5 @@
 import {Component, OnInit, Input, Output, EventEmitter} from "@angular/core";
-import {Params, ActivatedRoute} from "@angular/router";
+import {Params, ActivatedRoute, Router} from "@angular/router";
 import {PostService} from "../../../post/app.post.service";
 import {Post} from "../../../post/app.post.interface";
 
@@ -27,7 +27,7 @@ export class EditPost {
         this._id = value;
     }
 
-    constructor(private postService: PostService, private activatedRoute: ActivatedRoute) {
+    constructor(private postService: PostService, private activatedRoute: ActivatedRoute, private router: Router) {
         this.activatedRoute.params.subscribe((params: Params) => {
             this.id = params['id'];
             this.post = postService.readById(this.id).then(data => this.post = data);
@@ -36,6 +36,7 @@ export class EditPost {
 
     public edit() {
         this.postService.update(this.id, this.post).then(data => this.post = data);
+        this.router.navigate([""]);
     }
 
 }
