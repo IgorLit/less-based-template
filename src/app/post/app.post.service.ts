@@ -4,7 +4,6 @@ import {User} from "../account/app.account.user";
 
 @Injectable()
 export class PostService {
-
     public readAll(): Promise<Post[]> {
         return Promise.resolve(this.items);
     }
@@ -12,6 +11,15 @@ export class PostService {
     public readById(id: Number) {
         let result = this.items[this.getIndexById(id)];
         return Promise.resolve(result);
+    }
+
+    public create(data: Post) {
+        data.imageUrl = "assets/img/new-head-img-1.jpg";
+        data.comments = [];
+        data.date = new Date().toISOString().slice(0, 10).replace("T", " ");
+        data.id = this.items.length + 1;
+        this.items.push(data);
+        console.log(this.items);
     }
 
     public remove(id: any) {
@@ -42,6 +50,30 @@ export class PostService {
         return null;
     }
 
+
+    public popularTags(): Promise<any[]> {
+        let _tags: any = {};
+        for (let i = 0; i < this.items.length; i++) {
+            for (let tag of this.items[i].tags) {
+                if (Number.isInteger(_tags[tag])) {
+                    _tags[tag] += 1;
+                } else {
+                    _tags[tag] = 1;
+                }
+            }
+        }
+        let result = [];
+        for (let item in _tags) {
+            if (_tags) {
+                result.push({key: item, val: _tags[item]});
+            }
+        }
+        result.sort((a, b) => {
+            return b.val - a.val;
+        });
+        return Promise.resolve(result);
+    }
+
     constructor() {
         this.items = [{
             id: 1,
@@ -57,7 +89,8 @@ export class PostService {
                 },
                 date: "2017-05-15",
                 text: "first comment ... "
-            }]
+            }],
+            tags: ["Tag1", "Tag2", "Tag8", "Tag0"]
         }, {
             id: 6,
             imageUrl: "assets/img/new-head-img-1.jpg",
@@ -80,7 +113,8 @@ export class PostService {
                     },
                     date: "2017-05-16",
                     text: "second comment ... "
-                }]
+                }],
+            tags: ["Tag1", "Tag4", "Tag8", "Tag0"]
         },
             {
                 id: 2,
@@ -96,7 +130,8 @@ export class PostService {
                     },
                     date: "2017-05-15",
                     text: "first comment ... "
-                }]
+                }],
+                tags: ["Tag2", "Tag8", "Tag0"]
             }, {
                 id: 3,
                 imageUrl: "assets/img/new-head-img-1.jpg",
@@ -107,7 +142,8 @@ export class PostService {
                 comments: [{
                     date: "2017-05-15",
                     text: "first comment ... "
-                }]
+                }],
+                tags: ["Tag8"]
             },
             {
                 id: 4,
@@ -123,7 +159,8 @@ export class PostService {
                     },
                     date: "2017-05-15",
                     text: "first comment ... "
-                }]
+                }],
+                tags: ["Tag1", "Tag2", "Tag3", "Tag0"]
             }, {
                 id: 5,
                 imageUrl: "assets/img/new-head-img-1.jpg",
@@ -131,7 +168,8 @@ export class PostService {
                 date: "2017-09-19",
                 subtitle: "Subtitle 6",
                 text: "ashdasoidhas hasdh dkjhas asash ahasdas 6",
-                comments: []
+                comments: [],
+                tags: ["Tag1", "Tag4", "Tag0"]
             }];
     }
 

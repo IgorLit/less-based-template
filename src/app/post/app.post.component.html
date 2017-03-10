@@ -14,7 +14,7 @@
             </div>
 
         </div>
-        <div *ngIf="isLogin() && post.comments.length" class="comments-amount">
+        <div *ngIf="isLogin()" class="comments-amount">
             <a (click)="comments(post)">
                 {{post.comments.length}} Comments
             </a>
@@ -61,7 +61,7 @@
                         </a>
                     </div>
                 </div>
-                <div *ngIf="isLogin() && post.comments.length" class="comments-amount small">
+                <div *ngIf="isLogin()" class="comments-amount small">
                     <a (click)="comments(post)">
                         {{post.comments.length}} Comments
                     </a>

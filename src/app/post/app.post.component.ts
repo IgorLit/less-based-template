@@ -45,7 +45,8 @@ export class Post {
     public remove(post: any) {
         this.router.navigate(["posts", post.id, "remove"]);
     }
-    public comments(post:any) {
+
+    public comments(post: any) {
         this.router.navigate(["posts", post.id]);
     }
 }

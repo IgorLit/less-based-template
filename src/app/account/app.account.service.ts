@@ -4,7 +4,7 @@ import  {User} from  './app.account.user';
 @Injectable()
 export class AccountService {
     public static user: User = new User();
-    public static isLogin: boolean = false;
+    public static isLogin: boolean = true;
 
     public  login(username: HTMLInputElement, password: HTMLInputElement): Promise<any> { //TODO authorization with using db.
         return new Promise((resolve, reject) => {
@@ -13,7 +13,7 @@ export class AccountService {
                 AccountService.user = new User();
                 AccountService.isLogin = true;
                 AccountService.user.name = username.value;
-                AccountService.user.avatarUrl = "assets/img/superman.jpg";
+                AccountService.user.avatarUrl = "assets/img/user.jpg";
                 resolve();
             } else {
                 reject();

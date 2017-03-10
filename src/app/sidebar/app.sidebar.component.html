@@ -29,11 +29,9 @@
             Popular Tags
         </h2>
         <div class="tags">
-            <button class="btn btn-default">Cat</button>
-            <button class="btn btn-default">Dogs</button>
-            <button class="btn btn-default">Cat</button>
-            <button class="btn btn-default">Dogs</button>
-            <button class="btn btn-default">Category</button>
-            <button class="btn btn-default">Cat Here</button>
+            <!--<button *ngFor="let tag of popularTags"   class="btn btn-default">{{tag.key}} </button>-->
+            <span *ngFor="let tag of popularTagsFontSize | slice: 0:8">
+                <button [style.font-size.px] = "tag.val" class="btn btn-default">{{tag.key}}</button>
+            </span>
         </div>
     </aside>
