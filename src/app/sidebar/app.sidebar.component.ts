@@ -1,5 +1,6 @@
 import {Component} from "@angular/core";
 import  {PostService} from "../post/app.post.service";
+import {Router} from "@angular/router";
 
 @Component({
     selector: "sidebar",
@@ -39,14 +40,18 @@ export class Sidebar {
     private calculateFontSize(): void {
         this.popularTagsFontSize = this.popularTags;
         for (let i = 0; i < this.popularTagsFontSize.length; i++) {
-            let size = 24 - 4 * i;
-            this.popularTagsFontSize[i].val = size < 12 ? 12 : size;
+            let size = 24 - 3 * i;
+            this.popularTagsFontSize[i].val = size < 10 ? 10 : size;
         }
+    }
+
+    public filterByTag(tag:string) {
+        this.router.navigate(["posts", tag, "filter"]);
     }
 
     public recentPostsLimit: Number = 4;
 
-    constructor(public postService: PostService) {
+    constructor(public postService: PostService, private router: Router) {
         postService.readAll().then(data => {
             this.posts = data;
         });

@@ -27,14 +27,30 @@ export class EditPost {
         this._id = value;
     }
 
+    private _tags;
+
+    get tags() {
+        return this._tags;
+    }
+
+    set tags(value) {
+        this._tags = value;
+    }
+
     constructor(private postService: PostService, private activatedRoute: ActivatedRoute, private router: Router) {
         this.activatedRoute.params.subscribe((params: Params) => {
             this.id = params['id'];
-            this.post = postService.readById(this.id).then(data => this.post = data);
+            this.post = postService.readById(this.id).then(data => {
+                this.post = data;
+                this.tags = data.tags.toString();
+            });
         });
     }
 
     public edit() {
+        console.log(this.tags);
+        this.post.tags = this.tags.split(',');
+        console.log(this.tags.split(','));
         this.postService.update(this.id, this.post).then(data => this.post = data);
         this.router.navigate([""]);
     }

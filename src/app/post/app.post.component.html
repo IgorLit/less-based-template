@@ -1,7 +1,7 @@
 <article *ngFor="let post of posts | slice:0:bigPosts" class="article">
     <div class="news-head">
         <div class="post-manage">
-            <div *ngIf="isLogin()" class="manage-control">
+            <div *ngIf="isLogin() && getUser().name == post.creator.name" class="manage-control">
                 <a (click)="edit(post)">
                     <i class="fa fa-pencil" aria-hidden="true"></i>
                 </a>
@@ -49,7 +49,7 @@
     <div *ngFor="let post of posts | slice:bigPosts" class="col-md-6 col-lg-6 col-sm-6">
         <article class="article">
             <div class="news-head">
-                <div *ngIf="isLogin()" class="post-manage small">
+                <div *ngIf="isLogin() && getUser().name == post.creator.name" class="post-manage small">
                     <div class="manage-control">
                         <a (click)="edit(post)">
                             <i class="fa fa-pencil" aria-hidden="true"></i>

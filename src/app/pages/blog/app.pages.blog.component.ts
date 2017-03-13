@@ -40,6 +40,7 @@ export class BlogComponent {
     public getUser(): User {
         return AccountService.user;
     }
+
     public getUserName(): string {
         return AccountService.user.name;
     }
@@ -53,5 +54,11 @@ export class BlogComponent {
 
     public publishComment(input: HTMLInputElement) {
         this.postService.addComment(this.getUser(), this.id, input.value);
+    }
+
+    public removeComment(postId: any, commentId: any) {
+        this.postService.removeComment(postId, commentId).then((comments) => {
+            this.comments = comments;
+        });
     }
 }

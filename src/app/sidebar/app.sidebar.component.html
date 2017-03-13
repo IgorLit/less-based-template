@@ -31,7 +31,7 @@
         <div class="tags">
             <!--<button *ngFor="let tag of popularTags"   class="btn btn-default">{{tag.key}} </button>-->
             <span *ngFor="let tag of popularTagsFontSize | slice: 0:8">
-                <button [style.font-size.px] = "tag.val" class="btn btn-default">{{tag.key}}</button>
+                <button (click)="filterByTag(tag.key)" [style.font-size.px] = "tag.val" class="btn btn-default">{{tag.key}}</button>
             </span>
         </div>
     </aside>

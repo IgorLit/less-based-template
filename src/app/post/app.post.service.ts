@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import  {Post} from './app.post.interface';
 import {User} from "../account/app.account.user";
+import {AccountService} from "../account/app.account.service";
 
 @Injectable()
 export class PostService {
@@ -8,14 +9,35 @@ export class PostService {
         return Promise.resolve(this.items);
     }
 
+    public readByTag(tag: string) {
+        return Promise.resolve(this.findByTag(tag));
+    }
+
+    private findByTag(filterTag: string) {
+        let items = [];
+        for (let item of this.items) {
+            for (let tag of item.tags) {
+                if (tag === filterTag) {
+                    items.push(item);
+                }
+            }
+        }
+        return items;
+    }
+
     public readById(id: Number) {
         let result = this.items[this.getIndexById(id)];
         return Promise.resolve(result);
     }
 
+    public getUser() {
+        return AccountService.user;
+    }
+
     public create(data: Post) {
         data.imageUrl = "assets/img/new-head-img-1.jpg";
         data.comments = [];
+        data.creator = this.getUser();
         data.date = new Date().toISOString().slice(0, 10).replace("T", " ");
         data.id = this.items.length + 1;
         this.items.push(data);
@@ -34,11 +56,23 @@ export class PostService {
 
     public addComment(user: User, postId: any, commentText: any) {
         this.items[this.getIndexById(postId)].comments.push({
+            id: Date.now(),
             commenter: user,
             date: new Date().toISOString().slice(0, 19).replace("T", " "),
             text: commentText
         });
         return this.items[this.getIndexById(postId)].comments;
+    }
+
+    public removeComment(postId: any, commentId: any) {
+        return new Promise((resolve, reject) => {
+            let item = this.items[this.getIndexById(postId)];
+            for (let i = 0; i < item.comments.length; i++) {
+                if (item.comments[i].id === commentId) {
+                    resolve(this.items[this.getIndexById(postId)].comments.splice(i, 1));
+                }
+            }
+        });
     }
 
     private getIndexById(id: any) {
@@ -82,9 +116,14 @@ export class PostService {
             date: "2017-05-15",
             subtitle: "Subtitle",
             text: "If you read and listen to two articles every day, your reading and listening skills can improve fast.own language.",
+            creator: {
+                name: "root",
+                avatarUrl: "assets/img/user.jpg"
+            },
             comments: [{
+                id: 1,
                 commenter: {
-                    name: "Igor",
+                    name: "root",
                     avatarUrl: "assets/img/user.jpg"
                 },
                 date: "2017-05-15",
@@ -97,8 +136,13 @@ export class PostService {
             title: "My Title 6",
             date: "2017-07-06",
             subtitle: "Subtitle 6",
+            creator: {
+                name: "root",
+                avatarUrl: "assets/img/user.jpg"
+            },
             text: "ashdasoidhas hasdh dkjhas asash ahasdas 6",
             comments: [{
+                id: 2,
                 commenter: {
                     name: "Igor",
                     avatarUrl: "assets/img/user.jpg"
@@ -107,6 +151,7 @@ export class PostService {
                 text: "first comment ... "
             },
                 {
+                    id: 3,
                     commenter: {
                         name: "Igor",
                         avatarUrl: "assets/img/user.jpg"
@@ -122,8 +167,13 @@ export class PostService {
                 title: "My Title 7",
                 date: "2017-08-03",
                 subtitle: "Subtitle 6",
+                creator: {
+                    name: "admin",
+                    avatarUrl: "assets/img/user.jpg"
+                },
                 text: "ashdasoidhas hasdh dkjhas asash ahasdas 6",
                 comments: [{
+                    id: 4,
                     commenter: {
                         name: "Igor",
                         avatarUrl: "assets/img/user.jpg"
@@ -138,6 +188,10 @@ export class PostService {
                 title: "My Title 6",
                 date: "2017-08-28",
                 subtitle: "Subtitle 6",
+                creator: {
+                    name: "admin",
+                    avatarUrl: "assets/img/user.jpg"
+                },
                 text: "ashdasoidhas hasdh dkjhas asash ahasdas 6",
                 comments: [{
                     date: "2017-05-15",
@@ -151,8 +205,13 @@ export class PostService {
                 title: "My Title 6",
                 date: "2017-09-19",
                 subtitle: "Subtitle 6",
+                creator: {
+                    name: "root",
+                    avatarUrl: "assets/img/user.jpg"
+                },
                 text: "ashdasoidhas hasdh dkjhas asash ahasdas 6",
                 comments: [{
+                    id: 5,
                     commenter: {
                         name: "Igor",
                         avatarUrl: "assets/img/user.jpg"
@@ -167,6 +226,10 @@ export class PostService {
                 title: "My Title 6",
                 date: "2017-09-19",
                 subtitle: "Subtitle 6",
+                creator: {
+                    name: "root",
+                    avatarUrl: "assets/img/user.jpg"
+                },
                 text: "ashdasoidhas hasdh dkjhas asash ahasdas 6",
                 comments: [],
                 tags: ["Tag1", "Tag4", "Tag0"]

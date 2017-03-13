@@ -1,2 +1,39 @@
 .remove-dialog{
 }
+
+.modal-header{
+    background-color: #f26c4f;
+    height: 40px;
+    overflow: hidden;
+    padding: 2%;
+
+}
+.modal-title{
+    color:white;
+    font-size: 19px;
+}
+.modal-body{
+    padding: 15px;
+
+}
+.basic-form{
+    color:black;
+}
+.basic-form .input-submit {
+    float: left;
+    margin: 10px 5px 20px;
+    color:white;
+    box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.75);
+    border: 0;
+    background: linear-gradient(to bottom, #ff9780, #f26d50);
+    font-size: 14px;
+}
+
+.basic-form .input-close {
+    float: left;
+    margin: 10px 0 20px;
+    color:white;
+    box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.75);
+    border: 0;
+    font-size: 14px;
+}

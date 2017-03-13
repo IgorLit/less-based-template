@@ -1,5 +1,6 @@
 import {Component} from "@angular/core";
 import {Router} from "@angular/router";
+import {AccountService} from "./account/app.account.service";
 
 @Component({
     selector: "app-root",
@@ -10,6 +11,11 @@ export class AppComponent {
     public createPost() {
         this.router.navigate(["posts", "create"]);
     }
-    constructor(private router: Router) {
+
+    constructor(private router: Router, private account: AccountService) {
+    }
+
+    public isLogin() {
+        return AccountService.isLogin;
     }
 }

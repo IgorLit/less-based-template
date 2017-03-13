@@ -5,6 +5,7 @@ export interface Post {
     date: string;
     subtitle: string;
     text: string;
+    creator:any;
     comments: any[];
     tags:string[];
 }

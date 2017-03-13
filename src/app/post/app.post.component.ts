@@ -31,6 +31,15 @@ export class Post {
         return AccountService.isLogin;
     }
 
+    public getUser() {
+        return AccountService.user;
+    }
+
+    public avaliableEdit(creator: any):boolean {
+        console.log("creator: " + creator.name + " user:" + this.getUser().name + " equal: " + (creator.name === this.getUser().name));
+        return creator === this.getUser();
+    }
+
     constructor(public  posetService: PostService, private router: Router, public accountService: AccountService) {
         this.bigPosts = 2;
         posetService.readAll().then(data => {

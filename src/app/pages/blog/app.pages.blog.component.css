@@ -49,3 +49,16 @@
 .btn-info{
     border: 0;
 }
+.remove-comment{
+    float: right;
+    font-size: 20px;
+    color: white;
+}
+a{
+    text-decoration: none;
+    cursor: pointer;
+    color:white;
+}
+.post-text{
+    width: 100%;
+}
