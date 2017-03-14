@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-6 col-md-offset-1 content">
-        <article class="article">
+        <article  class="article">
             <div class="news-head">
                 <div class="news-social-network">
                     <div class="image">
@@ -29,7 +29,7 @@
                         <div class="panel panel-info">
                             <div class="panel-heading">
                                 <div class="author">{{comment.commenter.name}}
-                                    <span *ngIf="comment.commenter == getUser() " class="remove-comment"> <a (click)="removeComment(post.id, comment.id)"><i class="fa fa-window-close" aria-hidden="true"></i></a> </span>
+                                    <span *ngIf="comment.commenter.name == getUser().name" class="remove-comment"> <a (click)="removeComment(post.id, comment.id)"><i class="fa fa-window-close" aria-hidden="true"></i></a> </span>
                                 </div>
                                 <div class="metadata">
                                     <span class="date">{{comment.date}}</span>

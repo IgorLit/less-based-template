@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import  {User} from  './app.account.user';
+import {Router} from "@angular/router";
 
 @Injectable()
 export class AccountService {
@@ -21,7 +22,11 @@ export class AccountService {
         });
     }
 
+    constructor(private router: Router) {
+    }
+
     public   logout() {
+        this.router.navigate([""]);
         AccountService.isLogin = false;
     }
 }

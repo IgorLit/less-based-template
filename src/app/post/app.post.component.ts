@@ -4,9 +4,12 @@ import  {PostService} from './app.post.service';
 import {AccountService} from "../account/app.account.service";
 @Component({
     selector: "posts",
-    templateUrl: "./app/post/app.post.component.html"
+    templateUrl: "./app/post/app.post.component.html",
+    styleUrls: ["./app/post/app.post.component.css"]
 })
 export class Post {
+
+    public showDialog: boolean;
 
     get posts(): any[] {
         return this._posts;
@@ -35,12 +38,13 @@ export class Post {
         return AccountService.user;
     }
 
-    public avaliableEdit(creator: any):boolean {
+    public avaliableEdit(creator: any): boolean {
         console.log("creator: " + creator.name + " user:" + this.getUser().name + " equal: " + (creator.name === this.getUser().name));
         return creator === this.getUser();
     }
 
     constructor(public  posetService: PostService, private router: Router, public accountService: AccountService) {
+        this.showDialog = false;
         this.bigPosts = 2;
         posetService.readAll().then(data => {
             this.posts = data;
@@ -51,8 +55,20 @@ export class Post {
         this.router.navigate(["posts", post.id, "edit"]);
     }
 
+    private post;
     public remove(post: any) {
-        this.router.navigate(["posts", post.id, "remove"]);
+        this.showDialog = true;
+        this.post = post;
+    }
+    public yes() {
+        this.posetService.remove(this.post.id as Number).then((posts) => {
+            this.posts = posts;
+        });
+        this.showDialog = false;
+    }
+
+    public no() {
+        this.showDialog = false;
     }
 
     public comments(post: any) {

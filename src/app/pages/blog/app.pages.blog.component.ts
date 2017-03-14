@@ -45,6 +45,10 @@ export class BlogComponent {
         return AccountService.user.name;
     }
 
+    public isLogin() {
+        return AccountService.isLogin;
+    }
+
     constructor(private postService: PostService, private activatedRoute: ActivatedRoute) {
         this.activatedRoute.params.subscribe((params: Params) => {
             this.post = postService.readById(params['id']).then(data => this.post = data);

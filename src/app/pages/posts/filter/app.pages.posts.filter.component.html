@@ -1,6 +1,6 @@
 <div class="row">
-    <div class="col-md-6 col-md-offset-2 content">
-        <article *ngFor="let post of posts" class="article">
+    <div class="col-md-6 col-md-offset-2 content" style="min-height: 580px">
+        <article  *ngFor="let post of posts" class="article">
             <div class="news-head">
                 <div class="post-manage">
                     <div *ngIf="isLogin() && getUser().name == post.creator.name" class="manage-control">

@@ -24,11 +24,22 @@ export class FilterPost {
         return AccountService.user;
     }
 
-    constructor(private postService: PostService, private activatedRoute: ActivatedRoute) {
+    constructor(private postService: PostService, private activatedRoute: ActivatedRoute, private router: Router) {
         this.activatedRoute.params.subscribe((params: Params) => {
             postService.readByTag(params['tag']).then(data => {
                 this.posts = data;
             });
         });
+    }
+    public edit(post: any) {
+        this.router.navigate(["posts", post.id, "edit"]);
+    }
+
+    public remove(post: any) {
+        this.router.navigate(["posts", post.id, "remove"]);
+    }
+
+    public comments(post: any) {
+        this.router.navigate(["posts", post.id]);
     }
 }
