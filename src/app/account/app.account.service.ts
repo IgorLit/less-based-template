@@ -1,6 +1,7 @@
-import {Injectable} from '@angular/core';
-import  {User} from  './app.account.user';
+import {Injectable, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
+
+import  {User} from  './app.account.user';
 
 @Injectable()
 export class AccountService {
@@ -10,7 +11,6 @@ export class AccountService {
     public  login(username: HTMLInputElement, password: HTMLInputElement): Promise<any> { //TODO authorization with using db.
         return new Promise((resolve, reject) => {
             if ((username.value === "root" && password.value === "root") || (username.value === "admin" && password.value === "admin")) {
-                console.log("Login true");
                 AccountService.user = new User();
                 AccountService.isLogin = true;
                 AccountService.user.name = username.value;

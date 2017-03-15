@@ -1,10 +1,13 @@
-import {Injectable} from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
+
 import  {Post} from './app.post.interface';
 import {User} from "../account/app.account.user";
 import {AccountService} from "../account/app.account.service";
 
 @Injectable()
-export class PostService {
+export class PostService implements OnInit {
+
+    private items: Post[];
     public readAll(): Promise<Post[]> {
         return Promise.resolve(this.items);
     }
@@ -86,20 +89,20 @@ export class PostService {
 
 
     public popularTags(): Promise<any[]> {
-        let _tags: any = {};
+        let tags: any = {};
         for (let i = 0; i < this.items.length; i++) {
             for (let tag of this.items[i].tags) {
-                if (Number.isInteger(_tags[tag])) {
-                    _tags[tag] += 1;
+                if (Number.isInteger(tags[tag])) {
+                    tags[tag] += 1;
                 } else {
-                    _tags[tag] = 1;
+                    tags[tag] = 1;
                 }
             }
         }
         let result = [];
-        for (let item in _tags) {
-            if (_tags) {
-                result.push({key: item, val: _tags[item]});
+        for (let item in tags) {
+            if (tags) {
+                result.push({key: item, val: tags[item]});
             }
         }
         result.sort((a, b) => {
@@ -236,6 +239,8 @@ export class PostService {
             }];
     }
 
-    private items: Post[];
+    ngOnInit(): void {
+    }
+
 }
 

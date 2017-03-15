@@ -1,41 +1,20 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute, Params} from "@angular/router";
+
 import {PostService} from "../../post/app.post.service";
 import {AccountService} from "../../account/app.account.service";
 import {User} from "../../account/app.account.user";
+
 @Component({
     selector: "blog",
     templateUrl: "./app/pages/blog/app.pages.blog.component.html",
     styleUrls: ["./app/pages/blog/app.pages.blog.component.css"]
 })
-export class BlogComponent {
-    private _post;
-    private _id;
-    get id() {
-        return this._id;
-    }
+export class BlogComponent implements OnInit {
 
-    set id(value) {
-        this._id = value;
-    }
-
-    get post() {
-        return this._post;
-    }
-
-    set post(value) {
-        this._post = value;
-    }
-
-    private _comments;
-
-    get comments() {
-        return this._comments;
-    }
-
-    set comments(value) {
-        this._comments = value;
-    }
+    private post;
+    private id;
+    private comments;
 
     public getUser(): User {
         return AccountService.user;
@@ -50,8 +29,11 @@ export class BlogComponent {
     }
 
     constructor(private postService: PostService, private activatedRoute: ActivatedRoute) {
+    }
+
+    ngOnInit(): void {
         this.activatedRoute.params.subscribe((params: Params) => {
-            this.post = postService.readById(params['id']).then(data => this.post = data);
+            this.post = this.postService.readById(params['id']).then(data => this.post = data);
             this.id = params['id'];
         });
     }

@@ -1,5 +1,6 @@
 import {Component} from "@angular/core";
 import {Router} from "@angular/router";
+
 import {AccountService} from "./account/app.account.service";
 
 @Component({
@@ -12,7 +13,7 @@ export class AppComponent {
         this.router.navigate(["posts", "create"]);
     }
 
-    constructor(private router: Router, private account: AccountService) {
+    constructor(private router: Router) {
     }
 
     public isLogin() {

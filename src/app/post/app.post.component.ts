@@ -1,35 +1,20 @@
-import {Component, Input, EventEmitter, Output} from "@angular/core";
+import {Component, Input, EventEmitter, Output, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
+
 import {AccountService} from "../account/app.account.service";
+
 @Component({
     selector: "posts",
     templateUrl: "./app/post/app.post.component.html",
     styleUrls: ["./app/post/app.post.component.css"]
 })
-export class Post {
-
+export class Post implements  OnInit {
     public showDialog: boolean;
 
-    get posts(): any[] {
-        return this._posts;
-    }
-
     @Input()
-    set posts(value: any[]) {
-        this._posts = value;
-    }
-
-    private _bigPosts: Number;
+    private bigPosts: Number;
     @Input()
-    get bigPosts(): Number {
-        return this._bigPosts;
-    }
-
-    set bigPosts(value: Number) {
-        this._bigPosts = value;
-    }
-
-    private _posts: any[];
+    private posts: any[];
 
     public isLogin() {
         return AccountService.isLogin;
@@ -40,21 +25,20 @@ export class Post {
     }
 
     public avaliableEdit(creator: any): boolean {
-        console.log("creator: " + creator.name + " user:" + this.getUser().name + " equal: " + (creator.name === this.getUser().name));
         return creator === this.getUser();
     }
 
     constructor(private router: Router) {
+    }
+
+    ngOnInit(): void {
         this.showDialog = false;
         this.bigPosts = 2;
     }
-
     public edit(post: any) {
         this.router.navigate(["posts", post.id, "edit"]);
     }
-
     private post;
-
     public remove(post: any) {
         this.showDialog = true;
         this.post = post;

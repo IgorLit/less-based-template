@@ -1,4 +1,5 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
+
 import  {PostService} from "../post/app.post.service";
 import {Router} from "@angular/router";
 
@@ -6,17 +7,11 @@ import {Router} from "@angular/router";
     selector: "sidebar",
     templateUrl: "./app/sidebar/app.sidebar.component.html"
 })
-export class Sidebar {
+export class Sidebar implements OnInit {
 
-    private _posts: any[];
+    private posts: any[];
 
-    public get posts() {
-        return this._posts;
-    }
 
-    public set posts(value) {
-        this._posts = value;
-    }
 
     private popularTags: any[];
 
@@ -27,15 +22,7 @@ export class Sidebar {
         });
     }
 
-    private _popularTagsFontSize: any[];
-
-    get popularTagsFontSize(): any[] {
-        return this._popularTagsFontSize;
-    }
-
-    set popularTagsFontSize(value: any[]) {
-        this._popularTagsFontSize = value;
-    }
+    private popularTagsFontSize: any[];
 
     private calculateFontSize(): void {
         this.popularTagsFontSize = this.popularTags;
@@ -45,14 +32,17 @@ export class Sidebar {
         }
     }
 
-    public filterByTag(tag:string) {
+    public filterByTag(tag: string) {
         this.router.navigate(["posts", tag, "filter"]);
     }
 
     public recentPostsLimit: Number = 4;
 
     constructor(public postService: PostService, private router: Router) {
-        postService.readAll().then(data => {
+    }
+
+    ngOnInit(): void {
+        this.postService.readAll().then(data => {
             this.posts = data;
         });
         this.getPopularTags();
