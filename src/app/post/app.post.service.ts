@@ -65,7 +65,7 @@ export class PostService {
     }
 
     public removeComment(postId: any, commentId: any) {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             let item = this.items[this.getIndexById(postId)];
             for (let i = 0; i < item.comments.length; i++) {
                 if (item.comments[i].id === commentId) {

@@ -1,8 +1,7 @@
-import {Component, OnInit, Input, Output, EventEmitter} from "@angular/core";
+import {Component} from "@angular/core";
 import {Params, ActivatedRoute, Router} from "@angular/router";
 import {PostService} from "../../../post/app.post.service";
 import {PostModel} from "../../../post/app.post.model";
-import {ajaxGetJSON} from "rxjs/observable/dom/AjaxObservable";
 
 @Component({
     selector: "edit-post",
