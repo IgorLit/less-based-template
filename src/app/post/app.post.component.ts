@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, Input} from "@angular/core";
 import {Router} from "@angular/router";
 import  {PostService} from './app.post.service';
 import {AccountService} from "../account/app.account.service";
@@ -14,12 +14,13 @@ export class Post {
     get posts(): any[] {
         return this._posts;
     }
-
+    @Input()
     set posts(value: any[]) {
         this._posts = value;
     }
 
     private _bigPosts: Number;
+    @Input()
     get bigPosts(): Number {
         return this._bigPosts;
     }
@@ -43,7 +44,7 @@ export class Post {
         return creator === this.getUser();
     }
 
-    constructor(public  posetService: PostService, private router: Router, public accountService: AccountService) {
+    constructor(public  posetService: PostService, private router: Router) {
         this.showDialog = false;
         this.bigPosts = 2;
         posetService.readAll().then(data => {

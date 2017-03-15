@@ -5,7 +5,7 @@ import {Router} from "@angular/router";
 @Injectable()
 export class AccountService {
     public static user: User = new User();
-    public static isLogin: boolean = true;
+    public static isLogin: boolean = false;
 
     public  login(username: HTMLInputElement, password: HTMLInputElement): Promise<any> { //TODO authorization with using db.
         return new Promise((resolve, reject) => {
