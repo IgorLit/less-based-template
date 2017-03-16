@@ -11,7 +11,7 @@
         <div class="entry-field">
             <i class="fa fa-envelope" aria-hidden="true"></i>
             <input type="text"  placeholder="Leave your e-mail here">
-            <button class="btn btn-default">Join</button>
+            <button class="btn btn-tag">Join</button>
         </div>
         <p>
             <em>The fax machine is a very convenient aid to contact companies and friends because messages are transmitted immediately. Fax machines work like photocopiers. </em>
@@ -30,7 +30,7 @@
         </h2>
         <div class="tags">
             <span *ngFor="let tag of popularTagsFontSize | slice: 0:8">
-                <button (click)="filterByTag(tag.key)" [style.font-size.px] = "tag.val" class="btn btn-default">{{tag.key}}</button>
+                <button (click)="filterByTag(tag.key)" [style.font-size.px] = "tag.val" class="btn btn-tag">{{tag.key}}</button>
             </span>
         </div>
     </aside>
