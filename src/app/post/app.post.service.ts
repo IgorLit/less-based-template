@@ -1,6 +1,5 @@
 import {Injectable, OnInit} from '@angular/core';
 
-import  {Post} from './app.post.interface';
 import {User} from "../account/app.account.user";
 import {AccountService} from "../account/app.account.service";
 import {PostModel} from "./app.post.model";
@@ -9,7 +8,7 @@ import {CommentModel} from "../comment/app.comment.model";
 @Injectable()
 export class PostService implements OnInit {
 
-    private items: Post[];
+    private items: PostModel[];
 
     constructor(private accountService: AccountService) {
         this.items = [{
@@ -153,7 +152,7 @@ export class PostService implements OnInit {
     ngOnInit(): void {
     }
 
-    public readAll(): Promise<Post[]> {
+    public readAll(): Promise<PostModel[]> {
         return Promise.resolve(this.items);
     }
 
@@ -182,7 +181,7 @@ export class PostService implements OnInit {
         return this.accountService.getUser();
     }
 
-    public create(data: Post): Promise<PostModel[]> {
+    public create(data: PostModel): Promise<PostModel[]> {
         data.imageUrl = "assets/img/new-head-img-1.jpg";
         data.comments = [];
         data.creator = this.getUser();
@@ -197,7 +196,7 @@ export class PostService implements OnInit {
         return Promise.resolve(this.items);
     }
 
-    public update(id: any, data: Post): Promise<Post> {
+    public update(id: any, data: PostModel): Promise<PostModel> {
         Object.assign(this.items[this.getIndexById(id)], data);
         return Promise.resolve(this.items[this.getIndexById(id)]);
     }

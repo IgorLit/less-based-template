@@ -13,8 +13,10 @@ export class FilterPost implements OnInit {
     public posts;
     private tag: string;
 
-    constructor(private postService: PostService, private activatedRoute: ActivatedRoute, private router: Router) {
-    }
+    constructor(private postService: PostService,
+                private activatedRoute: ActivatedRoute,
+                private router: Router,
+                private accountService: AccountService) { }
 
     ngOnInit(): void {
         this.activatedRoute.params.subscribe((params: Params) => {
@@ -30,7 +32,7 @@ export class FilterPost implements OnInit {
     }
 
     public getUser() {
-        return AccountService.user;
+        return this.accountService.getUser();
     }
 
     public edit(post: PostModel) {

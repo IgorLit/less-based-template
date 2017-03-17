@@ -1,55 +1,27 @@
-import {Component, Input, EventEmitter, Output, OnInit} from "@angular/core";
+import {Component, OnInit, Input} from "@angular/core";
 
 import {AccountService} from "../account/app.account.service";
-import {PostModel} from "./app.post.model";
 import {User} from "../account/app.account.user";
+import {PostModel} from "./app.post.model";
 
 @Component({
-    selector: "posts",
-    templateUrl: "./app/post/app.post.component.html",
-    styleUrls: ["./app/post/app.post.component.css"]
+    selector: "post",
+    templateUrl: "./app/post/app.post.component.html"
 })
 export class Post implements OnInit {
-    private showDialog: boolean;
-    private post;
-    @Input() private bigPosts: Number;
-    @Input() private posts: PostModel[];
-    @Output() removeYes = new EventEmitter<void>();
-    @Output() removeNo = new EventEmitter<void>();
+    @Input() private post: PostModel;
 
-    constructor() {
+    constructor(private accountService: AccountService) {
     }
 
     ngOnInit(): void {
-        this.showDialog = false;
-        this.bigPosts = 2;
     }
 
-    public isLogin() {
+    public getUser(): User {
+        return this.accountService.getUser();
+    }
+
+    public isLogin(): boolean {
         return AccountService.isLogin;
     }
-
-    public getUser() {
-        return AccountService.user;
-    }
-
-    public avaliableEdit(creator: User): boolean {
-        return creator === this.getUser();
-    }
-
-    public remove(post: PostModel) {
-        this.showDialog = true;
-        this.post = post;
-    }
-
-    public yes() {
-        this.removeYes.emit(this.post);
-        this.showDialog = false;
-    }
-
-    public no() {
-        this.removeNo.emit();
-        this.showDialog = false;
-    }
-
 }

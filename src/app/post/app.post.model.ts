@@ -1,6 +1,4 @@
-import {Post} from "./app.post.interface";
-
-export class PostModel implements Post {
+export class PostModel {
     id: Number;
     imageUrl: string;
     title: string;

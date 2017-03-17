@@ -1,0 +1,43 @@
+<div *ngFor="let post of posts">
+   <post [post]="post"></post>
+</div>
+
+<!--
+<div class="row">
+    <div *ngFor="let post of posts | slice:bigPosts" class="col-md-6 col-lg-6 col-sm-6">
+        <article class="article">
+            <div class="news-head">
+                <div *ngIf="isLogin() && getUser().name === post.creator.name" class="post-manage small">
+                    <div class="manage-control">
+                        <a [routerLink]="['/posts',post.id,'edit']">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                    <div class="manage-control hover-display">
+                        <a (click)="remove(post)">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+                <div *ngIf="isLogin()" class="comments-amount small">
+                    <a [routerLink]="['/posts',post.id]">
+                        {{post.comments.length}} Comments
+                    </a>
+                </div>
+                <div class="news-social-network">
+                    <div class="image">
+                        <img src="{{post.imageUrl}}" alt="Head Image">
+                    </div>
+                </div>
+            </div>
+            <div class="news-body">
+                <h1>{{post.title}}</h1>
+                <small>{{post.date}}</small>
+                <br>
+                <span>{{post.text}}</span>
+            </div>
+        </article>
+    </div>
+</div>
+
+-->

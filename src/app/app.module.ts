@@ -9,7 +9,9 @@ import {Dialog} from './dialog/app.dialog.component';
 import {MainPage} from './pages/main/app.pages.main.component';
 import  {Sidebar} from './sidebar/app.sidebar.component';
 import  {Account} from './account/app.account.component';
+import  {PostList} from './post/app.post-list.component';
 import  {Post} from './post/app.post.component';
+import  {PostControls} from './post/app.post.contrls.component';
 import {routing, appRoutingProviders} from './app.routing';
 import {FormsModule} from "@angular/forms";
 import {EditPost} from "./pages/posts/edit/app.pages.posts.edit.component";
@@ -31,6 +33,8 @@ import {CommentCreate} from "./comment/app.comment.create.component";
         Account,
         Dialog,
         Post,
+        PostList,
+        PostControls,
         AppComponent,
         Sidebar,
         MainPage,
