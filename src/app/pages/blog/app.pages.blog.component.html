@@ -15,57 +15,6 @@
                 <span>{{post.text}}</span>
             </div>
         </article>
-        <div class="comments">
-            <h3 class="title-comments">Comments</h3>
-            <ul class="media-list">
-                <!-- Комментарий (уровень 1) -->
-                <li *ngFor="let comment of post.comments" class="media">
-                    <div class="media-left hidden-xs">
-                        <a>
-                            <img class="media-object img-circle" src="{{comment.commenter.avatarUrl}}" alt="...">
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <div class="panel panel-info">
-                            <div class="panel-heading">
-                                <div class="author">{{comment.commenter.name}}
-                                    <span *ngIf="comment.commenter.name == getUser().name" class="remove-comment"> <a (click)="removeComment(post.id, comment.id)"><i class="fa fa-window-close" aria-hidden="true"></i></a> </span>
-                                </div>
-                                <div class="metadata">
-                                    <span class="date">{{comment.date}}</span>
-                                </div>
-                            </div>
-                            <div class="panel-body">
-                                <div class="media-text text-justify">{{comment.text}}
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </li>
-                <!-- Конец комментария (уровень 1) -->
-                <li class="media">
-                    <div class="media-left hidden-xs">
-                        <a>
-                            <img class="media-object img-circle" src="{{getUser().avatarUrl}}" alt="...">
-                        </a>
-                    </div>
-                    <div class="media-body">
-                        <div class="panel panel-info">
-                            <div class="panel-heading">
-                                <div class="author">{{getUserName()}}</div>
-                            </div>
-                            <div class="panel-body">
-                                <div class="media-text text-justify">
-                                    <textarea class="post-text" cols="4"  #text></textarea>
-                                </div>
-                                <div class="pull-right"><a class="btn btn-info" (click)="publishComment(text)">Publish</a></div>
-                            </div>
-                        </div>
-
-                    </div>
-                </li>
-            </ul>
-        </div>
+       <comment-list [post]="post"> </comment-list>
     </div>
 </div>

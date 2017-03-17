@@ -1,6 +1,7 @@
-export  class User {
-    public name:string;
-    public avatarUrl:string;
+export class User {
+    public name: string;
+    public avatarUrl: string;
+
     constructor() {
     }
 }

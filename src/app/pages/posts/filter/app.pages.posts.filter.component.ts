@@ -3,6 +3,7 @@ import {Router, ActivatedRoute, Params} from "@angular/router";
 
 import {PostService} from "../../../post/app.post.service";
 import {AccountService} from "../../../account/app.account.service";
+import {PostModel} from "../../../post/app.post.model";
 
 @Component({
     selector: "filter-post",
@@ -11,6 +12,7 @@ import {AccountService} from "../../../account/app.account.service";
 export class FilterPost implements OnInit {
     public posts;
     private tag: string;
+
     constructor(private postService: PostService, private activatedRoute: ActivatedRoute, private router: Router) {
     }
 
@@ -22,6 +24,7 @@ export class FilterPost implements OnInit {
             });
         });
     }
+
     public isLogin() {
         return AccountService.isLogin;
     }
@@ -29,11 +32,12 @@ export class FilterPost implements OnInit {
     public getUser() {
         return AccountService.user;
     }
-    public edit(post: any) {
+
+    public edit(post: PostModel) {
         this.router.navigate(["posts", post.id, "edit"]);
     }
 
-    public removeYes(post: any) {
+    public removeYes(post: PostModel) {
         this.postService.remove(post.id).then(() => {
             this.postService.readByTag(this.tag).then(data => {
                 this.posts = data;
@@ -41,7 +45,7 @@ export class FilterPost implements OnInit {
         });
     }
 
-    public comments(post: any) {
+    public comments(post: PostModel) {
         this.router.navigate(["posts", post.id]);
     }
 }

@@ -66,6 +66,7 @@ h3 {
   position: fixed;
 }
 .social-networks a {
+  box-shadow: inset 0 1px 1px rgba(247, 247, 247, 0.5);
   font-size: 22px;
   background-color: #f26c4f;
   color: #af3f27;
@@ -2551,6 +2552,7 @@ h3 {
 }
 .article h1 {
   margin: 0;
+  padding-top: 30px;
 }
 .article h3 {
   color: #f26c4f;

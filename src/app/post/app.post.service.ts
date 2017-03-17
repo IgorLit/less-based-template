@@ -3,11 +3,156 @@ import {Injectable, OnInit} from '@angular/core';
 import  {Post} from './app.post.interface';
 import {User} from "../account/app.account.user";
 import {AccountService} from "../account/app.account.service";
+import {PostModel} from "./app.post.model";
+import {CommentModel} from "../comment/app.comment.model";
 
 @Injectable()
 export class PostService implements OnInit {
 
     private items: Post[];
+
+    constructor(private accountService: AccountService) {
+        this.items = [{
+            id: 1,
+            imageUrl: "assets/img/new-head-img-1.jpg",
+            title: "My Title-s",
+            date: "2017-05-15",
+            subtitle: "Subtitle",
+            text: "If you read and listen to two articles every day, your reading and listening skills can improve fast.own language.",
+            creator: {
+                name: "root",
+                avatarUrl: "assets/img/user.jpg"
+            },
+            comments: [{
+                id: 1,
+                postId: 1,
+                commenter: {
+                    name: "root",
+                    avatarUrl: "assets/img/user.jpg"
+                },
+                date: "2017-05-15",
+                text: "first comment ... "
+            }],
+            tags: ["Tag1", "Tag2", "Tag8", "Tag0"]
+        }, {
+            id: 6,
+            imageUrl: "assets/img/new-head-img-1.jpg",
+            title: "My Title 6",
+            date: "2017-07-06",
+            subtitle: "Subtitle 6",
+            creator: {
+                name: "root",
+                avatarUrl: "assets/img/user.jpg"
+            },
+            text: "ashdasoidhas hasdh dkjhas asash ahasdas 6",
+            comments: [{
+                id: 2,
+                postId: 6,
+                commenter: {
+                    name: "Igor",
+                    avatarUrl: "assets/img/user.jpg"
+                },
+                date: "2017-05-15",
+                text: "first comment ... "
+            },
+                {
+                    id: 3,
+                    postId: 6,
+                    commenter: {
+                        name: "Igor",
+                        avatarUrl: "assets/img/user.jpg"
+                    },
+                    date: "2017-05-16",
+                    text: "second comment ... "
+                }],
+            tags: ["Tag1", "Tag4", "Tag8", "Tag0"]
+        },
+            {
+                id: 2,
+                imageUrl: "assets/img/new-head-img-1.jpg",
+                title: "My Title 7",
+                date: "2017-08-03",
+                subtitle: "Subtitle 6",
+                creator: {
+                    name: "admin",
+                    avatarUrl: "assets/img/user.jpg"
+                },
+                text: "ashdasoidhas hasdh dkjhas asash ahasdas 6",
+                comments: [{
+                    id: 4,
+                    postId: 2,
+                    commenter: {
+                        name: "Igor",
+                        avatarUrl: "assets/img/user.jpg"
+                    },
+                    date: "2017-05-15",
+                    text: "first comment ... "
+                }],
+                tags: ["Tag2", "Tag8", "Tag0"]
+            }, {
+                id: 3,
+                imageUrl: "assets/img/new-head-img-1.jpg",
+                title: "My Title 6",
+                date: "2017-08-28",
+                subtitle: "Subtitle 6",
+                creator: {
+                    name: "admin",
+                    avatarUrl: "assets/img/user.jpg"
+                },
+                text: "ashdasoidhas hasdh dkjhas asash ahasdas 6",
+                comments: [{
+                    id: 300,
+                    postId: 3,
+                    commenter: {
+                        name: "Igor",
+                        avatarUrl: "assets/img/user.jpg"
+                    },
+                    date: "2017-05-15",
+                    text: "first comment ... "
+                }],
+                tags: ["Tag8"]
+            },
+            {
+                id: 4,
+                imageUrl: "assets/img/new-head-img-1.jpg",
+                title: "My Title 6",
+                date: "2017-09-19",
+                subtitle: "Subtitle 6",
+                creator: {
+                    name: "root",
+                    avatarUrl: "assets/img/user.jpg"
+                },
+                text: "ashdasoidhas hasdh dkjhas asash ahasdas 6",
+                comments: [{
+                    id: 5,
+                    postId: 4,
+                    commenter: {
+                        name: "Igor",
+                        avatarUrl: "assets/img/user.jpg"
+                    },
+                    date: "2017-05-15",
+                    text: "first comment ... "
+                }],
+                tags: ["Tag1", "Tag2", "Tag3", "Tag0"]
+            }, {
+                id: 5,
+                imageUrl: "assets/img/new-head-img-1.jpg",
+                title: "My Title 6",
+                date: "2017-09-19",
+                subtitle: "Subtitle 6",
+                creator: {
+                    name: "root",
+                    avatarUrl: "assets/img/user.jpg"
+                },
+                text: "ashdasoidhas hasdh dkjhas asash ahasdas 6",
+                comments: [],
+                tags: ["Tag1", "Tag4", "Tag0"]
+            }];
+    }
+
+    ngOnInit(): void {
+    }
+
     public readAll(): Promise<Post[]> {
         return Promise.resolve(this.items);
     }
@@ -33,18 +178,18 @@ export class PostService implements OnInit {
         return Promise.resolve(result);
     }
 
-    public getUser() {
-        return AccountService.user;
+    public getUser(): User {
+        return this.accountService.getUser();
     }
 
-    public create(data: Post) {
+    public create(data: Post): Promise<PostModel[]> {
         data.imageUrl = "assets/img/new-head-img-1.jpg";
         data.comments = [];
         data.creator = this.getUser();
         data.date = new Date().toISOString().slice(0, 10).replace("T", " ");
         data.id = this.items.length + 1;
         this.items.push(data);
-        console.log(this.items);
+        return Promise.resolve(this.items);
     }
 
     public remove(id: any) {
@@ -57,22 +202,23 @@ export class PostService implements OnInit {
         return Promise.resolve(this.items[this.getIndexById(id)]);
     }
 
-    public addComment(user: User, postId: any, commentText: any) {
+    public addComment(postId: any, commentText: any) {
         this.items[this.getIndexById(postId)].comments.push({
             id: Date.now(),
-            commenter: user,
+            postId: postId,
+            commenter: this.getUser(),
             date: new Date().toISOString().slice(0, 19).replace("T", " "),
             text: commentText
         });
         return this.items[this.getIndexById(postId)].comments;
     }
 
-    public removeComment(postId: any, commentId: any) {
+    public removeComment(comment:CommentModel) {
         return new Promise((resolve) => {
-            let item = this.items[this.getIndexById(postId)];
+            let item = this.items[this.getIndexById(comment.postId)];
             for (let i = 0; i < item.comments.length; i++) {
-                if (item.comments[i].id === commentId) {
-                    resolve(this.items[this.getIndexById(postId)].comments.splice(i, 1));
+                if (item.comments[i].id === comment.id) {
+                    resolve(this.items[this.getIndexById(comment.postId)].comments.splice(i, 1));
                 }
             }
         });
@@ -110,137 +256,5 @@ export class PostService implements OnInit {
         });
         return Promise.resolve(result);
     }
-
-    constructor() {
-        this.items = [{
-            id: 1,
-            imageUrl: "assets/img/new-head-img-1.jpg",
-            title: "My Title-s",
-            date: "2017-05-15",
-            subtitle: "Subtitle",
-            text: "If you read and listen to two articles every day, your reading and listening skills can improve fast.own language.",
-            creator: {
-                name: "root",
-                avatarUrl: "assets/img/user.jpg"
-            },
-            comments: [{
-                id: 1,
-                commenter: {
-                    name: "root",
-                    avatarUrl: "assets/img/user.jpg"
-                },
-                date: "2017-05-15",
-                text: "first comment ... "
-            }],
-            tags: ["Tag1", "Tag2", "Tag8", "Tag0"]
-        }, {
-            id: 6,
-            imageUrl: "assets/img/new-head-img-1.jpg",
-            title: "My Title 6",
-            date: "2017-07-06",
-            subtitle: "Subtitle 6",
-            creator: {
-                name: "root",
-                avatarUrl: "assets/img/user.jpg"
-            },
-            text: "ashdasoidhas hasdh dkjhas asash ahasdas 6",
-            comments: [{
-                id: 2,
-                commenter: {
-                    name: "Igor",
-                    avatarUrl: "assets/img/user.jpg"
-                },
-                date: "2017-05-15",
-                text: "first comment ... "
-            },
-                {
-                    id: 3,
-                    commenter: {
-                        name: "Igor",
-                        avatarUrl: "assets/img/user.jpg"
-                    },
-                    date: "2017-05-16",
-                    text: "second comment ... "
-                }],
-            tags: ["Tag1", "Tag4", "Tag8", "Tag0"]
-        },
-            {
-                id: 2,
-                imageUrl: "assets/img/new-head-img-1.jpg",
-                title: "My Title 7",
-                date: "2017-08-03",
-                subtitle: "Subtitle 6",
-                creator: {
-                    name: "admin",
-                    avatarUrl: "assets/img/user.jpg"
-                },
-                text: "ashdasoidhas hasdh dkjhas asash ahasdas 6",
-                comments: [{
-                    id: 4,
-                    commenter: {
-                        name: "Igor",
-                        avatarUrl: "assets/img/user.jpg"
-                    },
-                    date: "2017-05-15",
-                    text: "first comment ... "
-                }],
-                tags: ["Tag2", "Tag8", "Tag0"]
-            }, {
-                id: 3,
-                imageUrl: "assets/img/new-head-img-1.jpg",
-                title: "My Title 6",
-                date: "2017-08-28",
-                subtitle: "Subtitle 6",
-                creator: {
-                    name: "admin",
-                    avatarUrl: "assets/img/user.jpg"
-                },
-                text: "ashdasoidhas hasdh dkjhas asash ahasdas 6",
-                comments: [{
-                    date: "2017-05-15",
-                    text: "first comment ... "
-                }],
-                tags: ["Tag8"]
-            },
-            {
-                id: 4,
-                imageUrl: "assets/img/new-head-img-1.jpg",
-                title: "My Title 6",
-                date: "2017-09-19",
-                subtitle: "Subtitle 6",
-                creator: {
-                    name: "root",
-                    avatarUrl: "assets/img/user.jpg"
-                },
-                text: "ashdasoidhas hasdh dkjhas asash ahasdas 6",
-                comments: [{
-                    id: 5,
-                    commenter: {
-                        name: "Igor",
-                        avatarUrl: "assets/img/user.jpg"
-                    },
-                    date: "2017-05-15",
-                    text: "first comment ... "
-                }],
-                tags: ["Tag1", "Tag2", "Tag3", "Tag0"]
-            }, {
-                id: 5,
-                imageUrl: "assets/img/new-head-img-1.jpg",
-                title: "My Title 6",
-                date: "2017-09-19",
-                subtitle: "Subtitle 6",
-                creator: {
-                    name: "root",
-                    avatarUrl: "assets/img/user.jpg"
-                },
-                text: "ashdasoidhas hasdh dkjhas asash ahasdas 6",
-                comments: [],
-                tags: ["Tag1", "Tag4", "Tag0"]
-            }];
-    }
-
-    ngOnInit(): void {
-    }
-
 }
 

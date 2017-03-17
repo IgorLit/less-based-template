@@ -30,7 +30,7 @@
         </h2>
         <div class="tags">
             <span *ngFor="let tag of popularTagsFontSize | slice: 0:8">
-                <button (click)="filterByTag(tag.key)" [style.font-size.px] = "tag.val" class="btn btn-tag">{{tag.key}}</button>
+                <button routerLink="posts/{{tag.key}}/filter" [style.font-size.px] = "tag.val" class="btn btn-tag">{{tag.key}}</button>
             </span>
         </div>
     </aside>

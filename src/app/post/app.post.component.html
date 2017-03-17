@@ -1,29 +1,25 @@
 <article *ngFor="let post of posts | slice:0:bigPosts" class="article">
     <div class="news-head">
-        <div *ngIf="isLogin() && getUser().name == post.creator.name" class="post-manage">
-            <div  class="manage-control">
-                <a (click)="edit(post)">
+        <div *ngIf="isLogin() && getUser().name === post.creator.name" class="post-manage">
+            <div class="manage-control">
+                <a [routerLink]="['/posts',post.id,'edit']">
                     <i class="fa fa-pencil" aria-hidden="true"></i>
                 </a>
             </div>
-
             <div *ngIf="isLogin()" class="manage-control hover-display">
                 <a (click)="remove(post)">
                     <i class="fa fa-times" aria-hidden="true"></i>
                 </a>
             </div>
-
         </div>
         <div *ngIf="isLogin()" class="comments-amount">
-            <a (click)="comments(post)">
+            <a [routerLink]="['/posts',post.id]">
                 {{post.comments.length}} Comments
             </a>
         </div>
         <div class="news-social-network">
             <div class="image">
-
                 <img src="{{post.imageUrl}}" alt="Head Image">
-
             </div>
             <div class="circle">
                 <a href="">
@@ -37,7 +33,6 @@
             </div>
         </div>
     </div>
-    <div class="arrow arrow-up"> </div>
     <div class="news-body">
         <h1>{{post.title}}</h1>
         <small>{{post.date}}</small>
@@ -50,9 +45,9 @@
     <div *ngFor="let post of posts | slice:bigPosts" class="col-md-6 col-lg-6 col-sm-6">
         <article class="article">
             <div class="news-head">
-                <div *ngIf="isLogin() && getUser().name == post.creator.name" class="post-manage small">
+                <div *ngIf="isLogin() && getUser().name === post.creator.name" class="post-manage small">
                     <div class="manage-control">
-                        <a (click)="edit(post)">
+                        <a [routerLink]="['/posts',post.id,'edit']">
                             <i class="fa fa-pencil" aria-hidden="true"></i>
                         </a>
                     </div>
@@ -63,7 +58,7 @@
                     </div>
                 </div>
                 <div *ngIf="isLogin()" class="comments-amount small">
-                    <a (click)="comments(post)">
+                    <a [routerLink]="['/posts',post.id]">
                         {{post.comments.length}} Comments
                     </a>
                 </div>
@@ -82,6 +77,7 @@
         </article>
     </div>
 </div>
+
 <app-dialog [(visible)]="showDialog">
     <div class="modal-header">
         <span class="modal-title">Delete</span>
@@ -89,7 +85,7 @@
     <div class="modal-body">
         <form class="basic-form">
             <input class="input-submit" type="button" value="Yes" (click)="yes()">
-            <input class="input-submit"  type="button" value="No" (click)="no()">
+            <input class="input-submit" type="button" value="No" (click)="no()">
         </form>
     </div>
 </app-dialog>

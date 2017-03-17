@@ -12,7 +12,7 @@ export class EditPost implements OnInit {
     private post;
     private id;
     private tags;
-    public postExist: boolean = false;
+    private postExist: boolean = false;
 
     constructor(private postService: PostService, private activatedRoute: ActivatedRoute, private router: Router) {
     }
@@ -21,7 +21,7 @@ export class EditPost implements OnInit {
         this.activatedRoute.params.subscribe((params: Params) => {
             this.id = params['id'];
             if (this.id) {
-                this.post = this.postService.readById(this.id).then(data => {
+                this.post = this.postService.readById(this.id).then((data) => {
                     this.postExist = true;
                     this.post = data;
                     this.tags = data.tags.toString();
@@ -35,14 +35,17 @@ export class EditPost implements OnInit {
 
     public edit() {
         this.post.tags = this.tags.split(',');
-        this.postService.update(this.post.id, this.post).then(data => this.post = data);
-        this.router.navigate([""]);
+        this.postService.update(this.post.id, this.post).then((data) => {
+            this.post = data;
+            this.router.navigate([""]);
+        });
     }
 
     public create() {
         this.post.tags = this.tags.split(",");
-        this.postService.create(this.post);
-        this.router.navigate([""]);
+        this.postService.create(this.post).then(() => {
+            this.router.navigate([""]);
+        });
     }
 
 }

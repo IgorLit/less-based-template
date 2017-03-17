@@ -1,0 +1,20 @@
+<div class="create-comment">
+    <div class="media-left hidden-xs">
+        <a>
+            <img class="media-object img-circle" src="{{getUser().avatarUrl}}" alt="...">
+        </a>
+    </div>
+    <div class="media-body">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="author">{{getUserName()}}</div>
+            </div>
+            <div class="panel-body">
+                <div class="media-text text-justify">
+                    <textarea class="post-text" cols="4" #text></textarea>
+                </div>
+                <div class="pull-right"><a class="btn btn-info" (click)="publishComment(text)">Publish</a></div>
+            </div>
+        </div>
+    </div>
+</div>

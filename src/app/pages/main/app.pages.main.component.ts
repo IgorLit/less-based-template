@@ -10,18 +10,14 @@ import {PostModel} from "../../post/app.post.model";
 export class MainPage implements OnInit {
     private posts: PostModel[];
 
-    constructor(public  posetService: PostService) {
+    constructor(private  postService: PostService) {
     }
 
     ngOnInit(): void {
-        this.posetService.readAll().then(data => {
-            this.posts = data;
-        });
+        this.postService.readAll().then(data => this.posts = data);
     }
 
     public removeYes(post: any) {
-        this.posetService.remove(post.id).then((posts) => {
-            this.posts = posts;
-        });
+        this.postService.remove(post.id).then(posts => this.posts = posts);
     }
 }

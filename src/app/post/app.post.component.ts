@@ -1,20 +1,29 @@
 import {Component, Input, EventEmitter, Output, OnInit} from "@angular/core";
-import {Router} from "@angular/router";
 
 import {AccountService} from "../account/app.account.service";
+import {PostModel} from "./app.post.model";
+import {User} from "../account/app.account.user";
 
 @Component({
     selector: "posts",
     templateUrl: "./app/post/app.post.component.html",
     styleUrls: ["./app/post/app.post.component.css"]
 })
-export class Post implements  OnInit {
-    public showDialog: boolean;
+export class Post implements OnInit {
+    private showDialog: boolean;
+    private post;
+    @Input() private bigPosts: Number;
+    @Input() private posts: PostModel[];
+    @Output() removeYes = new EventEmitter<void>();
+    @Output() removeNo = new EventEmitter<void>();
 
-    @Input()
-    private bigPosts: Number;
-    @Input()
-    private posts: any[];
+    constructor() {
+    }
+
+    ngOnInit(): void {
+        this.showDialog = false;
+        this.bigPosts = 2;
+    }
 
     public isLogin() {
         return AccountService.isLogin;
@@ -24,28 +33,14 @@ export class Post implements  OnInit {
         return AccountService.user;
     }
 
-    public avaliableEdit(creator: any): boolean {
+    public avaliableEdit(creator: User): boolean {
         return creator === this.getUser();
     }
 
-    constructor(private router: Router) {
-    }
-
-    ngOnInit(): void {
-        this.showDialog = false;
-        this.bigPosts = 2;
-    }
-    public edit(post: any) {
-        this.router.navigate(["posts", post.id, "edit"]);
-    }
-    private post;
-    public remove(post: any) {
+    public remove(post: PostModel) {
         this.showDialog = true;
         this.post = post;
     }
-
-    @Output() removeYes = new EventEmitter<void>();
-    @Output() removeNo = new EventEmitter<void>();
 
     public yes() {
         this.removeYes.emit(this.post);
@@ -57,7 +52,4 @@ export class Post implements  OnInit {
         this.showDialog = false;
     }
 
-    public comments(post: any) {
-        this.router.navigate(["posts", post.id]);
-    }
 }
