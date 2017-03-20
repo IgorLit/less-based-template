@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from "@angular/core";
+import {Component, Input} from "@angular/core";
 
 import {PostService} from "../post/app.post.service";
 import {AccountService} from "../account/app.account.service";
@@ -10,13 +10,10 @@ import {PostModel} from "../post/app.post.model";
     templateUrl: "./app/comment/app.comment.create.component.html",
     styleUrls: ["./app/comment/app.comment.component.css"]
 })
-export class CommentCreate implements OnInit {
+export class CommentCreate {
     @Input() private post: PostModel;
 
     constructor(private postService: PostService, private accountService: AccountService) {
-    }
-
-    ngOnInit(): void {
     }
 
     public publishComment(input: HTMLInputElement) {

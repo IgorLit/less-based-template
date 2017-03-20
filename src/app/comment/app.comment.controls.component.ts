@@ -1,4 +1,5 @@
-import {Component, OnInit, Input} from "@angular/core";
+import {Component, Input} from "@angular/core";
+
 import {CommentModel} from "./app.comment.model";
 import {PostService} from "../post/app.post.service";
 
@@ -7,13 +8,10 @@ import {PostService} from "../post/app.post.service";
     templateUrl: "./app/comment/app.comment.controls.component.html",
     styleUrls: ["./app/comment/app.comment.controls.component.css"]
 })
-export class Controls implements OnInit {
+export class Controls {
     @Input() private comment: CommentModel;
 
     constructor(private postService: PostService) {
-    }
-
-    ngOnInit(): void {
     }
 
     public removeComment() {

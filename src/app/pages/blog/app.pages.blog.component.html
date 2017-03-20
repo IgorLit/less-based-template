@@ -1,20 +1,6 @@
 <div class="row">
     <div class="col-md-6 col-md-offset-1 content">
-        <article  class="article">
-            <div class="news-head">
-                <div class="news-social-network">
-                    <div class="image">
-                        <img src="{{post.imageUrl}}" alt="Head Image">
-                    </div>
-                </div>
-            </div>
-            <div class="news-body">
-                <h1>{{post.title}}</h1>
-                <small>{{post.date}}</small>
-                <h3>{{post.subtitle}}</h3>
-                <span>{{post.text}}</span>
-            </div>
-        </article>
+       <post [post]="post" [showControls]="showControls"></post>
        <comment-list [post]="post"> </comment-list>
     </div>
 </div>

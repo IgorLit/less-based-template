@@ -8,7 +8,7 @@ import {PostModel} from "../../post/app.post.model";
     templateUrl: "./app/pages/main/app.pages.main.component.html"
 })
 export class MainPage implements OnInit {
-    private posts: PostModel[];
+    private posts: PostModel[] = [];
 
     constructor(private  postService: PostService) {
     }

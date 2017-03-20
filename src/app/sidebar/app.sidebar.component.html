@@ -1,36 +1,36 @@
-
-    <aside class="sidebar">
-        <h2>Creative+ Design blog</h2>
-        <small>Your Bi-Line to go here</small>
-        <p>
-            <span> <em>Grannies are very important for female elephants. A Behavioural Psychologist at the University of Stirling has been studying elephant herds in Kenya for decades. Her studies have found that the survival of female elephants and their success at reproducing is helped not only by having a mum but also by having a grandma. Female elephants support each other and protect and care for calves as a group and the grandmothers play an important role.  Elephants and girls should never forget their gran.</em></span>
-        </p>
-        <h2>
-            Recieve Updates
-        </h2>
-        <div class="entry-field">
-            <i class="fa fa-envelope" aria-hidden="true"></i>
-            <input type="text"  placeholder="Leave your e-mail here">
-            <button class="btn btn-tag">Join</button>
-        </div>
-        <p>
-            <em>The fax machine is a very convenient aid to contact companies and friends because messages are transmitted immediately. Fax machines work like photocopiers. </em>
-        </p>
-        <h2>
-            Recent Posts
-        </h2>
-        <ul  class="sidebar-list">
-            <li *ngFor="let post of posts | slice:0: recentPostsLimit">
-                <em> {{post.title}}</em><br>
-                <small>{{post.date}}</small>
-            </li>
-        </ul>
-        <h2>
-            Popular Tags
-        </h2>
-        <div class="tags">
+<aside class="sidebar">
+    <h2>Creative+ Design blog</h2>
+    <small>Your Bi-Line to go here</small>
+    <p>
+        <span> <em>Grannies are very important for female elephants. A Behavioural Psychologist at the University of Stirling has been studying elephant herds in Kenya for decades. Her studies have found that the survival of female elephants and their success at reproducing is helped not only by having a mum but also by having a grandma. Female elephants support each other and protect and care for calves as a group and the grandmothers play an important role.  Elephants and girls should never forget their gran.</em></span>
+    </p>
+    <h2>
+        Recieve Updates
+    </h2>
+    <div class="entry-field">
+        <i class="fa fa-envelope" aria-hidden="true"></i>
+        <input type="text" placeholder="Leave your e-mail here">
+        <button class="btn btn-tag">Join</button>
+    </div>
+    <p>
+        <em>The fax machine is a very convenient aid to contact companies and friends because messages are transmitted
+            immediately. Fax machines work like photocopiers. </em>
+    </p>
+    <h2>
+        Recent Posts
+    </h2>
+    <ul class="sidebar-list">
+        <li *ngFor="let post of posts | slice:0: recentPostsLimit">
+            <em> {{post.title}}</em><br>
+            <small>{{post.date}}</small>
+        </li>
+    </ul>
+    <h2>
+        Popular Tags
+    </h2>
+    <div class="tags">
             <span *ngFor="let tag of popularTagsFontSize | slice: 0:8">
-                <button routerLink="posts/{{tag.key}}/filter" [style.font-size.px] = "tag.val" class="btn btn-tag">{{tag.key}}</button>
+                <button [routerLink]="['posts',tag.key,'filter']" [style.font-size.px]="tag.val" class="btn btn-tag">{{tag.key}}</button>
             </span>
-        </div>
-    </aside>
+    </div>
+</aside>

@@ -8,10 +8,10 @@ import {AccountService} from "./account/app.account.service";
     styleUrls: ['./app/app.component.css']
 })
 export class AppComponent {
-    constructor() {
+    constructor(private accountService: AccountService) {
     }
 
-    public isLogin() {
-        return AccountService.isLogin;
+    public isLogin(): boolean {
+        return this.accountService.isLogin();
     }
 }

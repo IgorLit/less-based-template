@@ -2561,7 +2561,7 @@ h3 {
 .post-manage,
 .comments-amount {
   margin: 0 5px;
-  right: 5px;
+  right: 20px;
   justify-content: center;
   text-align: center;
   align-items: center;
@@ -2593,9 +2593,6 @@ h3 {
   text-decoration: none;
   margin: 19px;
   cursor: pointer;
-}
-.small {
-  right: 20px;
 }
 .sidebar {
   background: repeating-linear-gradient(0deg, #fbfbfb, #fbfbfb 2px /* black stripe */, #fefefe 0, #fefefe 13px /* white stripe */);

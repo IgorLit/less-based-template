@@ -9,7 +9,7 @@ import {PostModel} from "../post/app.post.model";
     templateUrl: "./app/sidebar/app.sidebar.component.html"
 })
 export class Sidebar implements OnInit {
-    private posts: PostModel[];
+    private posts: PostModel[] = [];
     private popularTags: any[];
     private popularTagsFontSize: any[];
     private recentPostsLimit: Number = 4;

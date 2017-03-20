@@ -8,7 +8,7 @@ import {CommentModel} from "../comment/app.comment.model";
 @Injectable()
 export class PostService implements OnInit {
 
-    private items: PostModel[];
+    private items: PostModel[] = [];
 
     constructor(private accountService: AccountService) {
         this.items = [{

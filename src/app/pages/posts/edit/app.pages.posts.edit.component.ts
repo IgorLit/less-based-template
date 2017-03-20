@@ -9,7 +9,7 @@ import {PostModel} from "../../../post/app.post.model";
     templateUrl: "./app/pages/posts/edit/app.pages.posts.edit.component.html"
 })
 export class EditPost implements OnInit {
-    private post;
+    private post:PostModel = new PostModel();
     private id;
     private tags;
     private postExist: boolean = false;
@@ -21,7 +21,7 @@ export class EditPost implements OnInit {
         this.activatedRoute.params.subscribe((params: Params) => {
             this.id = params['id'];
             if (this.id) {
-                this.post = this.postService.readById(this.id).then((data) => {
+                 this.postService.readById(this.id).then((data) => {
                     this.postExist = true;
                     this.post = data;
                     this.tags = data.tags.toString();

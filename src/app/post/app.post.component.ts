@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from "@angular/core";
+import {Component, Input} from "@angular/core";
 
 import {AccountService} from "../account/app.account.service";
 import {User} from "../account/app.account.user";
@@ -8,13 +8,11 @@ import {PostModel} from "./app.post.model";
     selector: "post",
     templateUrl: "./app/post/app.post.component.html"
 })
-export class Post implements OnInit {
+export class Post {
     @Input() private post: PostModel;
+    @Input() private showControls: boolean = true;
 
     constructor(private accountService: AccountService) {
-    }
-
-    ngOnInit(): void {
     }
 
     public getUser(): User {
@@ -22,6 +20,6 @@ export class Post implements OnInit {
     }
 
     public isLogin(): boolean {
-        return AccountService.isLogin;
+        return this.accountService.isLogin();
     }
 }

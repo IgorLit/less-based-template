@@ -1,12 +1,14 @@
 <article  class="article">
     <div class="news-head">
-        <div *ngIf="isLogin() && getUser().name === post.creator.name" class="post-manage">
-           <post-controls [post]="post"></post-controls>
-        </div>
-        <div *ngIf="isLogin()" class="comments-amount">
-            <a [routerLink]="['/posts',post.id]">
-                {{post.comments.length}} Comments
-            </a>
+        <div class="metadata" *ngIf="showControls">
+            <div *ngIf="isLogin() && getUser().name === post.creator.name" class="post-manage right">
+                <post-controls [post]="post"></post-controls>
+            </div>
+            <div *ngIf="isLogin()" class="comments-amount right">
+                <a [routerLink]="['/posts',post.id]">
+                    {{post.comments.length}} Comments
+                </a>
+            </div>
         </div>
         <div class="news-social-network">
             <div class="image">
@@ -25,7 +27,7 @@
         </div>
     </div>
     <div class="news-body">
-        <h1>{{post.title}}</h1>
+        <h1 [routerLink]="['posts',post.id]" [ngStyle]="{'cursor':'pointer'}">{{post.title}}</h1>
         <small>{{post.date}}</small>
         <h3>{{post.subtitle}}</h3>
         <span>{{post.text}}</span>

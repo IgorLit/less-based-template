@@ -6,17 +6,12 @@ import  {User} from  './app.account.user';
 @Injectable()
 export class AccountService {
     private static user: User = new User();
-    public static isLogin: boolean = false;
+    private static isLogin: boolean = true;
 
     constructor(private router: Router) {
     }
 
-    public getUser(): User {
-        return AccountService.user;
-    }
-
-
-    public login(username: HTMLInputElement, password: HTMLInputElement): Promise<any> { //TODO authorization with using db.
+    public login(username: HTMLInputElement, password: HTMLInputElement): Promise<any> {
         return new Promise((resolve, reject) => {
             if ((username.value === "root" && password.value === "root") || (username.value === "admin" && password.value === "admin")) {
                 AccountService.user = new User();
@@ -28,6 +23,14 @@ export class AccountService {
                 reject();
             }
         });
+    }
+
+    public getUser(): User {
+        return AccountService.user;
+    }
+
+    public isLogin():boolean {
+        return AccountService.isLogin;
     }
 
     public logout() {

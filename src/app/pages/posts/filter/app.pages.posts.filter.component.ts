@@ -4,19 +4,22 @@ import {Router, ActivatedRoute, Params} from "@angular/router";
 import {PostService} from "../../../post/app.post.service";
 import {AccountService} from "../../../account/app.account.service";
 import {PostModel} from "../../../post/app.post.model";
+import {User} from "../../../account/app.account.user";
 
 @Component({
     selector: "filter-post",
     templateUrl: "./app/pages/posts/filter/app.pages.posts.filter.component.html"
 })
 export class FilterPost implements OnInit {
-    public posts;
+    private posts: PostModel[];
     private tag: string;
+    private bigPosts: Number;
 
     constructor(private postService: PostService,
                 private activatedRoute: ActivatedRoute,
                 private router: Router,
-                private accountService: AccountService) { }
+                private accountService: AccountService) {
+    }
 
     ngOnInit(): void {
         this.activatedRoute.params.subscribe((params: Params) => {
@@ -25,13 +28,14 @@ export class FilterPost implements OnInit {
                 this.posts = data;
             });
         });
+        this.bigPosts = 5;
     }
 
-    public isLogin() {
-        return AccountService.isLogin;
+    public isLogin(): boolean {
+        return this.accountService.isLogin();
     }
 
-    public getUser() {
+    public getUser(): User {
         return this.accountService.getUser();
     }
 

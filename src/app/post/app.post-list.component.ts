@@ -1,6 +1,5 @@
-import {Component, Input, EventEmitter, Output, OnInit} from "@angular/core";
+import {Component, Input} from "@angular/core";
 
-import {AccountService} from "../account/app.account.service";
 import {PostModel} from "./app.post.model";
 
 @Component({
@@ -8,24 +7,10 @@ import {PostModel} from "./app.post.model";
     templateUrl: "./app/post/app.post-list.component.html",
     styleUrls: ["./app/post/app.post-list.component.css"]
 })
-export class PostList implements OnInit {
+export class PostList {
     @Input() private posts: PostModel[];
+    @Input() private bigPosts: Number = 2;
 
-    constructor(private accountService: AccountService) {
+    constructor() {
     }
-
-    ngOnInit(): void {
-    }
-
-    public isLogin() {
-        return AccountService.isLogin;
-    }
-
-    public getUser() {
-        return this.accountService.getUser();
-    }
-
-    // public avaliableEdit(creator: User): boolean {
-    //     return creator === this.getUser();
-    // }
 }
