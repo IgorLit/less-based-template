@@ -153,7 +153,9 @@ export class PostService implements OnInit {
     }
 
     public readAll(): Promise<PostModel[]> {
-        return Promise.resolve(this.items);
+        return new Promise((resolve, reject) => {
+            resolve(this.items);
+        });
     }
 
     public readByTag(tag: string) {
@@ -173,8 +175,10 @@ export class PostService implements OnInit {
     }
 
     public readById(id: Number) {
-        let result = this.items[this.getIndexById(id)];
-        return Promise.resolve(result);
+        return new Promise((resolve, reject) => {
+            let result = this.items[this.getIndexById(id)];
+            resolve(result);
+        });
     }
 
     public getUser(): User {
@@ -182,38 +186,46 @@ export class PostService implements OnInit {
     }
 
     public create(data: PostModel): Promise<PostModel[]> {
-        data.imageUrl = "assets/img/new-head-img-1.jpg";
-        data.comments = [];
-        data.creator = this.getUser();
-        data.date = new Date().toISOString().slice(0, 10).replace("T", " ");
-        data.id = this.items.length + 1;
-        this.items.push(data);
-        return Promise.resolve(this.items);
+        return new Promise((resolve, reject) => {
+            data.imageUrl = "assets/img/new-head-img-1.jpg";
+            data.comments = [];
+            data.creator = this.getUser();
+            data.date = new Date().toISOString().slice(0, 10).replace("T", " ");
+            data.id = this.items.length + 1;
+            this.items.push(data);
+            resolve(this.items);
+        });
     }
 
     public remove(id: any) {
-        this.items.splice(this.getIndexById(id), 1);
-        return Promise.resolve(this.items);
+        return new Promise((resolve, reject) => {
+            this.items.splice(this.getIndexById(id), 1);
+            resolve(this.items);
+        });
     }
 
     public update(id: any, data: PostModel): Promise<PostModel> {
-        Object.assign(this.items[this.getIndexById(id)], data);
-        return Promise.resolve(this.items[this.getIndexById(id)]);
+        return new Promise((resolve, reject) => {
+            Object.assign(this.items[this.getIndexById(id)], data);
+            resolve(this.items[this.getIndexById(id)]);
+        });
     }
 
     public addComment(postId: any, commentText: any) {
-        this.items[this.getIndexById(postId)].comments.push({
-            id: Date.now(),
-            postId: postId,
-            commenter: this.getUser(),
-            date: new Date().toISOString().slice(0, 19).replace("T", " "),
-            text: commentText
+        return new Promise((resolve, reject) => {
+            this.items[this.getIndexById(postId)].comments.push({
+                id: Date.now(),
+                postId: postId,
+                commenter: this.getUser(),
+                date: new Date().toISOString().slice(0, 19).replace("T", " "),
+                text: commentText
+            });
+            resolve(this.items[this.getIndexById(postId)].comments);
         });
-        return this.items[this.getIndexById(postId)].comments;
     }
 
-    public removeComment(comment:CommentModel) {
-        return new Promise((resolve) => {
+    public removeComment(comment: CommentModel) {
+        return new Promise((resolve, reject) => {
             let item = this.items[this.getIndexById(comment.postId)];
             for (let i = 0; i < item.comments.length; i++) {
                 if (item.comments[i].id === comment.id) {
@@ -234,26 +246,28 @@ export class PostService implements OnInit {
 
 
     public popularTags(): Promise<any[]> {
-        let tags: any = {};
-        for (let i = 0; i < this.items.length; i++) {
-            for (let tag of this.items[i].tags) {
-                if (Number.isInteger(tags[tag])) {
-                    tags[tag] += 1;
-                } else {
-                    tags[tag] = 1;
+        return new Promise((resolve, reject) => {
+            let tags: any = {};
+            for (let i = 0; i < this.items.length; i++) {
+                for (let tag of this.items[i].tags) {
+                    if (Number.isInteger(tags[tag])) {
+                        tags[tag] += 1;
+                    } else {
+                        tags[tag] = 1;
+                    }
                 }
             }
-        }
-        let result = [];
-        for (let item in tags) {
-            if (tags) {
-                result.push({key: item, val: tags[item]});
+            let result = [];
+            for (let item in tags) {
+                if (tags) {
+                    result.push({key: item, val: tags[item]});
+                }
             }
-        }
-        result.sort((a, b) => {
-            return b.val - a.val;
+            result.sort((a, b) => {
+                return b.val - a.val;
+            });
+            resolve(result);
         });
-        return Promise.resolve(result);
     }
 }
 
