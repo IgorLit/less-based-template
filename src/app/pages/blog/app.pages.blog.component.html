@@ -1,0 +1,6 @@
+<div class="row">
+    <div *ngIf="post" class="col-md-6 col-md-offset-1 content">
+       <post [post]="post" [showControls]="showControls"></post>
+       <comment-list [post]="post"> </comment-list>
+    </div>
+</div>

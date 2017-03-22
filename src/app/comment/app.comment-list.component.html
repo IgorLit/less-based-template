@@ -1,0 +1,10 @@
+<div class="comments">
+    <h3 class="title-comments">Comments</h3>
+    <ul class="media-list">
+        <li *ngFor="let comment of post.comments" class="media">
+         <comment [comment]="comment"></comment>
+        <li class="media">
+            <comment-create [post]="post"></comment-create>
+        </li>
+    </ul>
+</div>

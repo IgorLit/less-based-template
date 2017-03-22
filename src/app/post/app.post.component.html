@@ -1,0 +1,35 @@
+<article  class="article">
+    <div class="news-head">
+        <div class="metadata" *ngIf="showControls">
+            <div *ngIf="isLogin() && getUser().name === post.creator.name" class="post-manage right">
+                <post-controls [post]="post"></post-controls>
+            </div>
+            <div class="comments-amount right">
+                <a [routerLink]="['/posts',post.id]">
+                    {{post.comments.length}} Comments
+                </a>
+            </div>
+        </div>
+        <div class="news-social-network">
+            <div class="image">
+                <img src="{{post.imageUrl}}" alt="Head Image">
+            </div>
+            <div class="circle">
+                <a href="">
+                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
+            </div>
+            <div class="circle">
+                <a href="#">
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="news-body">
+        <h1 [routerLink]="['posts',post.id]" [ngStyle]="{'cursor':'pointer'}">{{post.title}}</h1>
+        <small>{{post.date}}</small>
+        <h3>{{post.subtitle}}</h3>
+        <span>{{post.text}}</span>
+    </div>
+</article>

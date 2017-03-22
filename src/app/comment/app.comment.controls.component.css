@@ -1,0 +1,10 @@
+.remove-comment{
+    float: right;
+    font-size: 20px;
+    color: white;
+}
+a{
+    text-decoration: none;
+    cursor: pointer;
+    color:white;
+}

@@ -1,0 +1,64 @@
+
+.media-body .author {
+    display: block;
+    font-size: 1rem;
+    color: #000;
+    font-weight: 700;
+}
+.media-body .metadata {
+    display: block;
+    color: #000;
+    font-size: .75rem;
+}
+.title-comments {
+    font-size: 1.4rem;
+    font-weight: bold;
+    line-height: 1.5rem;
+    color: rgba(0,0,0,.87);
+    margin-bottom: 1rem;
+    padding-bottom: .25rem;
+    border-bottom: 1px solid rgba(34,36,38,.15);
+}
+.comments-amount{
+    margin-top: 0;
+}
+.post-manage {
+    position: relative;
+}
+.media-left img {
+    width: 70px;
+}
+.media {
+    margin-top:0px;
+}
+.media-text {
+    margin-bottom: 10px;
+}
+.panel-heading{
+    background-color: #f26c4f;
+}
+.panel-heading .author{
+    font-size: 16px;
+}
+.panel-heading .metadata .date{
+    font-size: 10px;
+}
+.panel{
+    border: 0;
+}
+.btn-info{
+    border: 0;
+}
+.remove-comment{
+    float: right;
+    font-size: 20px;
+    color: white;
+}
+a{
+    text-decoration: none;
+    cursor: pointer;
+    color:white;
+}
+.post-text{
+    width: 100%;
+}
