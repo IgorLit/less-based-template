@@ -23,6 +23,9 @@ export class CommentCreate {
     public getUser(): User {
         return this.accountService.getUser();
     }
+    public isLogin(): boolean {
+        return this.accountService.isLogin();
+    }
 
     public getUserName(): string {
         return this.accountService.getUser().name;

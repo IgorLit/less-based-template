@@ -4,7 +4,7 @@
             <div *ngIf="isLogin() && getUser().name === post.creator.name" class="post-manage right">
                 <post-controls [post]="post"></post-controls>
             </div>
-            <div *ngIf="isLogin()" class="comments-amount right">
+            <div class="comments-amount right">
                 <a [routerLink]="['/posts',post.id]">
                     {{post.comments.length}} Comments
                 </a>

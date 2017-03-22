@@ -2449,6 +2449,9 @@ h3 {
   padding-right: 5%;
   background-color: #f26c4f;
 }
+.navbar-collapse {
+  background-image: url('../img/header-background.jpg');
+}
 .navbar-nav a {
   cursor: pointer;
 }
@@ -2488,7 +2491,7 @@ h3 {
   color: white;
 }
 .article {
-  margin: 0 0 2% 0;
+  margin: 0 0 5% 0;
 }
 .article .news-head {
   padding: 5.5px;
@@ -2600,9 +2603,13 @@ h3 {
   box-shadow: 0 0 0 1px #c2c0b8 inset, 0 10px 0 -4px #ffffff, 0 10px 0 -3px #c2c0b8, 0 18px 0 -8px #ffffff, 0 18px 0 -7px #c2c0b8;
 }
 .btn-tag {
-  background: linear-gradient(to bottom, #eeeeee, #dddddd);
-  box-shadow: 0px 1.5px 2px 0px rgba(0, 0, 0, 0.7);
-  border: 0px solid #000000;
+  border-radius: 3px;
+  background: linear-gradient(350deg, #dddddd 0%, #eeeeee 100%);
+  box-shadow: 0px 0.5px 1px 0px #555555, inset 0px -0.5px 0.5px 0px rgba(85, 85, 85, 0.8), inset 0px 1px 2px 0px #ffffff;
+  color: #555555;
+  border: 0px solid #d7d7d7;
+  height: 38px;
+  margin: 0;
 }
 .entry-field {
   margin: 5px 0;
@@ -2631,7 +2638,7 @@ h3 {
   padding-right: 5px;
 }
 .tags .btn {
-  margin: 1px;
+  margin: 1px 1px 5px 1px;
 }
 .site-footer {
   background-color: #373737;

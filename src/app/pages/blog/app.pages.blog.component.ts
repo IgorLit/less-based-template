@@ -18,7 +18,11 @@ export class BlogComponent implements OnInit {
 
     ngOnInit(): void {
         this.activatedRoute.params.subscribe((params: Params) => {
-            this.postService.readById(params['id']).then(data => this.post = data);
+            this.postService.readById(params['id'])
+                .then(data => this.post = data)
+                .catch(() => {
+                    this.post = null;
+                });
         });
     }
 }

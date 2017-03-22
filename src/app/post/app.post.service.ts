@@ -32,7 +32,7 @@ export class PostService implements OnInit {
                 date: "2017-05-15",
                 text: "first comment ... "
             }],
-            tags: ["Tag1", "Tag2", "Tag8", "Tag0"]
+            tags: ["Tag1", "Tag2", "Tag8", "Tag0", "Tag100"]
         }, {
             id: 6,
             imageUrl: "assets/img/new-head-img-1.jpg",
@@ -64,7 +64,7 @@ export class PostService implements OnInit {
                     date: "2017-05-16",
                     text: "second comment ... "
                 }],
-            tags: ["Tag1", "Tag4", "Tag8", "Tag0"]
+            tags: ["Tag1", "Tag4", "Tag8", "Tag0", "Tag100"]
         },
             {
                 id: 2,
@@ -87,7 +87,7 @@ export class PostService implements OnInit {
                     date: "2017-05-15",
                     text: "first comment ... "
                 }],
-                tags: ["Tag2", "Tag8", "Tag0"]
+                tags: ["Tag2", "Tag8", "Tag0", "Tag36"]
             }, {
                 id: 3,
                 imageUrl: "assets/img/new-head-img-1.jpg",
@@ -132,7 +132,7 @@ export class PostService implements OnInit {
                     date: "2017-05-15",
                     text: "first comment ... "
                 }],
-                tags: ["Tag1", "Tag2", "Tag3", "Tag0"]
+                tags: ["Tag1", "Tag2", "Tag3", "Tag0", "Tag32"]
             }, {
                 id: 5,
                 imageUrl: "assets/img/new-head-img-1.jpg",
@@ -174,10 +174,14 @@ export class PostService implements OnInit {
         return items;
     }
 
-    public readById(id: Number) {
+    public readById(id: Number): Promise<PostModel> {
         return new Promise((resolve, reject) => {
             let result = this.items[this.getIndexById(id)];
-            resolve(result);
+            if (result) {
+                resolve(result);
+            } else {
+                reject();
+            }
         });
     }
 
@@ -197,7 +201,7 @@ export class PostService implements OnInit {
         });
     }
 
-    public remove(id: any) {
+    public remove(id: any): Promise<PostModel[]> {
         return new Promise((resolve, reject) => {
             this.items.splice(this.getIndexById(id), 1);
             resolve(this.items);

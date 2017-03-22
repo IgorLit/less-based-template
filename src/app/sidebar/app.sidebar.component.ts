@@ -34,8 +34,8 @@ export class Sidebar implements OnInit {
     private calculateFontSize(): void {
         this.popularTagsFontSize = this.popularTags;
         for (let i = 0; i < this.popularTagsFontSize.length; i++) {
-            let size = 24 - 3 * i;
-            this.popularTagsFontSize[i].val = size < 10 ? 10 : size;
+            let size = 20 - (2 * i + 1);
+            this.popularTagsFontSize[i].val = size < 9 ? 9 : size;
         }
     }
 }

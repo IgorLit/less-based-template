@@ -1,4 +1,4 @@
-<div class="create-comment">
+<div *ngIf="isLogin()" class="create-comment">
     <div class="media-left hidden-xs">
         <a>
             <img class="media-object img-circle" src="{{getUser().avatarUrl}}" alt="...">

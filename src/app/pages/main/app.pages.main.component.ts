@@ -16,8 +16,4 @@ export class MainPage implements OnInit {
     ngOnInit(): void {
         this.postService.readAll().then(data => this.posts = data);
     }
-
-    public removeYes(post: any) {
-        this.postService.remove(post.id).then(posts => this.posts = posts);
-    }
 }
