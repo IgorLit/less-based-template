@@ -6,7 +6,7 @@ import  {User} from  './app.account.user';
 @Injectable()
 export class AccountService {
     private static user: User = new User();
-    private static isLogin: boolean = true;
+    private static isLogin: boolean = false;
 
     constructor(private router: Router) {
     }

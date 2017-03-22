@@ -5,7 +5,8 @@ import {PostService} from "./app.post.service";
 
 @Component({
     selector: "post-controls",
-    templateUrl: "./app/post/app.post.controls.component.html"
+    templateUrl: "./app/post/app.post.controls.component.html",
+    styleUrls: ["./app/post/app.post.controls.component.css"]
 })
 export class PostControls implements OnInit {
     @Input() private post: PostModel;
